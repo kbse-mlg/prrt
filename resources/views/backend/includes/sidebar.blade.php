@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li>
-            <a href="{{ route('admin.dashboard') }}">
+            <a href="{{ route('admin.tambah') }}">
                     <i class="fa fa-dashboard"></i>
                     <span>Tambah Data</span>
                 </a>
