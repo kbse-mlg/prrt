@@ -45,11 +45,22 @@
                                     <input type="text" class="form-control" id="Longitude" placeholder="Longitude">
                                 </div>
                             </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+
+                            </div>
+                            <div class="col-sm-10">
+                                <div id="mapid" class="form-control"style="width: 100%; height: 400px;"></div>
+                            </div>
+                            
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit"class="btn btn-info">Simpan</button>
+                            <button type="submit"class="btn btn-danger">Kembali</button>
                         </div>
                     </form>
-                    <div class="box-body">
-                        <div id="mapid" style="width: 100%; height: 400px;"></div>
-                    </div>
                 </div>
             </div>
         </div>
