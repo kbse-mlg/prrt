@@ -34,18 +34,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail" class="col-sm-2 control-label">Bandar</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Bandar" placeholder="Negeri">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail" class="col-sm-2 control-label">Negeri</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Negeri" placeholder="Negeri">
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Latitude</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="Latitude" >
@@ -72,7 +60,11 @@
         integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
         crossorigin=""></script>
     <script src="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.js"></script>
-    
+    <script src="https://unpkg.com/esri-leaflet@2.0.8"></script>
+
+    <!-- Esri Leaflet Geocoder -->
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.4/dist/esri-leaflet-geocoder.css">
+    <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.4"></script>
         <script>
 
         var mymap = L.map('mapid').setView([3.1390, 101.6869], 13);
@@ -168,17 +160,34 @@
             alert('"expensive query here"');
         });
         //stateChangingButton.addTo( mymap );
-         var Latitude = document.getElementById("Latitude");
+         
          var zoomBar = L.easyBar([ stateChangingButton, findCoffee, ]);
-
+         var geocodeServices = L.esri.Geocoding.geocodeService();
           zoomBar.addTo(mymap);
           var shapes = L.featureGroup().addTo(mymap);
           mymap.on("click",function(event){
               $("#Latitude").val(event.latlng.lat.toString()) ;
               $("#Longitude").val(event.latlng.lng.toString())
+              geocodeServices.reverse().latlng(event.latlng).run(function(error,result){
+                  $("#Alamat").val(result.address.Match_addr);
+              })
               console.log(event.latlng.lat.toString()+"test");
               
           });
+          var arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider();
+          var searchControl = L.esri.Geocoding.geosearch({
+              providers:[
+                  arcgisOnline,
+                  L.esri.Geocoding.mapServiceProvider({
+                      label:'States and Counties',
+                      url:'https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer',
+                      layers:[3,4],
+                      searchFields:['NAME','STATE_NAME']
+                  })
+              ]
+          }).addTo(mymap);
+          
+
           
     </script>
 @endsection
