@@ -2,12 +2,69 @@
 
 @section('page-header')
     <h1>
-        {{ app_name() }}
-        <small>{{ trans('strings.backend.dashboard.title') }}</small>
+        {{ trans('strings.backend.dashboard.title') }}
     </h1>
 @endsection
 
 @section('content')
+<div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-building"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Bangunan</span>
+              <span class="info-box-number">343</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-user-circle-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Penduduk</span>
+              <span class="info-box-number">41,410</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-star"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Fasilitas</span>
+              <span class="info-box-number">405</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Kepadatan</span>
+              <span class="info-box-number">20<smal>%</smal></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
 <div class="row">
     <div class="col-md-8">
         <div class="box box-info">
@@ -18,7 +75,8 @@
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
         <div class="box-body no-padding">
-                <div class="col-md-10 col-sm-9"  style="padding:0 0 0 0">
+            <div id="mapid"style="height: 600px;"></div>
+                {{-- <div class="col-md-10 col-sm-9"  style="padding:0 0 0 0">
                     <!-- Map will be created here -->
                     <div id="mapid"style="height: 600px;"></div>
                 </div>
@@ -38,7 +96,7 @@
                     </div>
                     <!-- /.description-block -->
                   </div>
-                </div>
+                </div> --}}
                 <!-- /.col -->
               </div>
         </div><!-- /.box-body -->
