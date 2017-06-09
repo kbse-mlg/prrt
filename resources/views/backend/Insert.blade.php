@@ -22,12 +22,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail" class="col-sm-2 control-label">Jumlah Penduduk</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Jumlah" placeholder="Jumlah Penduduk">
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Alamat</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="Alamat" placeholder="Alamat">
