@@ -8,18 +8,70 @@
 @endsection
 
 @section('content')
-    <div class="box box-info">
+<div class="row">
+    <div class="col-md-8">
+        <div class="box box-info">
             <div class="box-header with-border">
             <h3 class="box-title">{{ trans('strings.backend.map.label') }}</h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
-        <div class="box-body">
-            <div id="mapid" style="width: 100%; height: 600px;z-index:0"></div>
+        <div class="box-body no-padding">
+                <div class="col-md-10 col-sm-9"  style="padding:0 0 0 0">
+                    <!-- Map will be created here -->
+                    <div id="mapid"style="height: 600px;"></div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-2 col-sm-3" style="padding:0 0 0 0">
+                  <div class="pad box-pane-right bg-blue" style="min-height: 280px">
+                    <div class="description-block margin-bottom">
+                      <div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+                      <h5 class="description-header">8390</h5>
+                      <span class="description-text">Bangunan</span>
+                    </div>
+                    <!-- /.description-block -->
+                    <div class="description-block margin-bottom" style="height:433px">
+                      <div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+                      <h5 class="description-header">3023</h5>
+                      <span class="description-text">Penduduk</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                </div>
+                <!-- /.col -->
+              </div>
         </div><!-- /.box-body -->
     </div>
-    
+    <div class="col-md-4">
+    <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">Maklumat</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-footer no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#">Agama
+                    <div class="chart-responsive">
+                    <canvas id="religionChart" height="170" width="328" style="width: 328px; min-height:170px;"></canvas>
+                  </div>
+                <li><a href="#">Keturunan
+                <div class="chart-responsive">
+                        <canvas id="etnicChart" height="173" width="328" style="width: 328px; min-height: 173px;"></canvas>
+                    </div>
+                </li>
+              </ul>
+            </div>
+            <!-- /.footer -->
+          </div>
+    </div>
+    </div>
+</div>
     <div class="box box-info">
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
@@ -38,10 +90,9 @@
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
         integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
         crossorigin=""></script>
-        <script src="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.js"></script>
-
-        <script>
-
+    <script src="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+    <script>
         var mymap = L.map('mapid').setView([3.1390, 101.6869], 13);
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -150,13 +201,92 @@
         var zoomBar = L.easyBar([ stateChangingButton, findCoffee, ]);
 
         zoomBar.addTo(mymap);
+
+         // setup chart
+        var randomScalingFactor = function() {
+            return Math.round(Math.random() * 100);
+        };
+
+        var religionConfig = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                    ],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                    ],
+                    label: 'Dataset 1'
+                }],
+                labels: [
+                    "Islam",
+                    "Kristen",
+                    "Hindhu",
+                    "Budha",
+                    "Katholik"
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+            }
+        };
+
+        var etnicConfig = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                    ],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                    ],
+                    label: 'Dataset 1'
+                }],
+                labels: [
+                    "Bumi Putera",
+                    "Cina",
+                    "India",
+                    "Lain-lain"
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+            }
+        };
+       
+        var religionCtx = document.getElementById("religionChart").getContext("2d");
+        window.religionPie = new Chart(religionCtx, religionConfig);
+        var etnicCtx = document.getElementById("etnicChart").getContext("2d");
+        window.etnicPie = new Chart(etnicCtx, etnicConfig);
     </script>
 
 @endsection
 
 @section('after-styles')
-<link rel="stylesheet" href="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.css">
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
    integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
    crossorigin=""/>
 @endsection
