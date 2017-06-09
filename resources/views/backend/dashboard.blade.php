@@ -8,18 +8,43 @@
 @endsection
 
 @section('content')
-    <div class="box box-info">
+<div class="row">
+    <div class="col-md-8">
+        <div class="box box-info">
             <div class="box-header with-border">
             <h3 class="box-title">{{ trans('strings.backend.map.label') }}</h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
-        <div class="box-body">
-            <div id="mapid" style="width: 100%; height: 600px;z-index:0"></div>
+        <div class="box-body no-padding">
+                <div class="col-md-10 col-sm-9"  style="padding:0 0 0 0">
+                    <!-- Map will be created here -->
+                    <div id="mapid"style="height: 600px;"></div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-2 col-sm-3" style="padding:0 0 0 0">
+                  <div class="pad box-pane-right bg-blue" style="min-height: 280px">
+                    <div class="description-block margin-bottom">
+                      <div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+                      <h5 class="description-header">8390</h5>
+                      <span class="description-text">Bangunan</span>
+                    </div>
+                    <!-- /.description-block -->
+                    <div class="description-block margin-bottom" style="height:433px">
+                      <div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+                      <h5 class="description-header">3023</h5>
+                      <span class="description-text">Penduduk</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                </div>
+                <!-- /.col -->
+              </div>
         </div><!-- /.box-body -->
     </div>
-    
+    </div>
+</div>
     <div class="box box-info">
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
