@@ -7,20 +7,19 @@ class CreateFacilityTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('Facility', function(Blueprint $table) {
+		Schema::create('facility', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('id_building')->unsigned();
 			$table->string('Nama');
-			$table->string('jenis');
 			$table->string('condition');
 			$table->string('tahun');
-			$table->string('harga');
+			$table->decimal('harga')->default('0');
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('Facility');
+		Schema::drop('facility');
 	}
 }

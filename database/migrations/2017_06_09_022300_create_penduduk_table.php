@@ -13,7 +13,7 @@ class CreatePendudukTable extends Migration {
 			$table->string('no_ic')->unique();
 			$table->string('nama');
 			$table->string('jantina');
-			$table->string('umur');
+			$table->tinyInteger('umur');
 			$table->string('race');
 			$table->string('religion');
 			$table->string('status');
