@@ -16,7 +16,7 @@
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
         <div class="box-body">
-            <div id="mapid" style="width: 100%; height: 600px;"></div>
+            <div id="mapid" style="width: 100%; height: 600px;z-index:0"></div>
         </div><!-- /.box-body -->
     </div>
     
@@ -38,7 +38,7 @@
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
         integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
         crossorigin=""></script>
-    <script src="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.js"></script>
+        <script src="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.js"></script>
 
         <script>
 
@@ -106,11 +106,23 @@
 		    .bindPopup("<b>BillBoard Location</b>");
         L.geoJSON(feature).addTo(mymap);
 
-        var dummyPoints =  L.layerGroup([
-            L.marker([3.2390,101.6869]),
-            L.marker([3.1390,101.6969]),
-            L.marker([3.1190,101.5869])
-        ]);
+        var data = [
+                {"loc":[3.2390,101.6869], "title":"aquamarine"},
+                {"loc":[3.1590,101.6969], "title":"black"},
+                {"loc":[3.1390,101.6969], "title":"blue"},
+                {"loc":[3.1190,101.5869], "title":"blues"},
+	    ];
+    
+	    var markersLayer = new L.LayerGroup();	//layer contain searched elements
+        
+        ////////////populate map with markers from sample data
+        for(i in data) {
+            var title = data[i].title,	//value searched
+                loc = data[i].loc,		//position found
+                marker = new L.Marker(new L.latLng(loc), {title: title} );//se property searched
+            marker.bindPopup('title: '+ title );
+            markersLayer.addLayer(marker);
+        }
 
         var stateChangingButton = L.easyButton({
             states: [{
@@ -118,7 +130,7 @@
                     icon:      'fa-tree',               // and define its properties
                     title:     'zoom to a forest',      // like its title
                     onClick: function(btn, map) {       // and its callback
-                        mymap.addLayer(dummyPoints);
+                        mymap.addLayer(markersLayer);
                         btn.state('zoom-to-school');    // change state on click!
                     }
                 }, {
@@ -126,7 +138,7 @@
                     icon:      'fa-university',
                     title:     'zoom to a school',
                     onClick: function(btn, map) {
-                         mymap.removeLayer(dummyPoints);
+                         mymap.removeLayer(markersLayer);
                         btn.state('zoom-to-forest');
                     }
             }]
@@ -135,9 +147,9 @@
             alert('"expensive query here"');
         });
         //stateChangingButton.addTo( mymap );
-         var zoomBar = L.easyBar([ stateChangingButton, findCoffee, ]);
+        var zoomBar = L.easyBar([ stateChangingButton, findCoffee, ]);
 
-          zoomBar.addTo(mymap);
+        zoomBar.addTo(mymap);
     </script>
 
 @endsection
