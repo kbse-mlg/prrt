@@ -36,6 +36,12 @@
                     <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
                 </a>
             </li>
+            <li>
+            <a href="{{ route('admin.tambah') }}">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Tambah Data</span>
+                </a>
+            </li>
 
             <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
 
