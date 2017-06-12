@@ -18,13 +18,13 @@
                             </div>
                         </div>
                     @endif
-                    <form action="{{route('admin.insertBuilding')}}" method="post" class="form-horizontal">
+                    <form action="{{route('admin.insertBuilding')}}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Nama</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nama" placeholder="Nama">
+                                    <input type="text" class="form-control" id="nama_bangun" placeholder="Nama">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -98,10 +98,10 @@
         var geocodeServices = L.esri.Geocoding.geocodeService();
         var shapes = L.featureGroup().addTo(mymap);
         mymap.on("click",function(event){
-            $("#Latitude").val(event.latlng.lat.toString()) ;
-            $("#Longitude").val(event.latlng.lng.toString())
+            $("#latitude").val(event.latlng.lat.toString()) ;
+            $("#longitude").val(event.latlng.lng.toString())
             geocodeServices.reverse().latlng(event.latlng).run(function(error,result){
-                $("#Alamat").val(result.address.Match_addr);
+                $("#alamat").val(result.address.Match_addr);
             })
             console.log(event.latlng.lat.toString()+"test");
         });

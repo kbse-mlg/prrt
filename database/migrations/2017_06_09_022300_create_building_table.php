@@ -9,7 +9,7 @@ class CreateBuildingTable extends Migration {
 	{
 		Schema::create('building', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('nama_bangun', 500);
+			$table->string('nama', 500);
 			$table->string('jenis', 50);
 			$table->string('alamat', 500);
 			$table->float('latitude');

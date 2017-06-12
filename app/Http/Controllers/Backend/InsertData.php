@@ -23,6 +23,7 @@ class InsertData extends Controller
 
 
   public function insertBuilding(Request $request){
+
     $validate = \Validator::make($request->all(),[
             'nama'      =>  'required',
             'jenis'     =>  'required',
@@ -49,7 +50,7 @@ class InsertData extends Controller
         ];
 
     $insert = [
-            'nama_bangunan'      =>  $request->nama,
+            'nama_bangun'        =>  $request->nama_bangun,
             'jenis'              =>  $request->jenis,
             'alamat'             =>  $request->alamat,
             'latitude'           =>  $request->latitude,
@@ -57,8 +58,8 @@ class InsertData extends Controller
 
     ];
 
-    DB::table('Building')->insert($insert);
-    return redirect()->back()->with('after_save',$after_save);
+    
+    return redirect()->back()->with($insert);
   }
 
   public function insertFacility(){
