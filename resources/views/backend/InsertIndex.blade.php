@@ -7,16 +7,20 @@
         <table class="table">
         <tr>
            <th>No</th>
-           <th>Email</th>
-           <th>Password</th>
+           <th>Building</th>
+           <th>Alamat</th>
+           <th>Latitude</th>
+           <th>Latitude</th>
         </tr>
         <tbody>
            <?php $i = 1 ?>
             @foreach($user as $item)
             <tr>
                 <td>{{$i}}</td>
-                <td>{{$item->email}}</td>
-                <td>{{$item->password}}<td>
+                <td>{{$item->nama_bangun}}</td>
+                <td>{{$item->alamat}}</td>
+                <td>{{$item->latitude}}</td>
+                <td>{{$item->longitude}}</td>
             </tr>
             <?php $i++; ?>
             @endforeach

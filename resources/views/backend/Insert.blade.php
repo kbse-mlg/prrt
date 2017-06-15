@@ -7,42 +7,48 @@
                     <div class="box-header with border">
                         <h3 class="box-title">Tambah Data</h3>
                     </div>
-                    <form action="" class="form-horizontal">
+                    @if(Session::has('after_save'))
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-dismissible alert-{{Session::get('after_save.alert')}}">
+                                    <button class="close" data-dismiss="alert">x</button>
+                                    <strong>{{Session::get('after_save.tittle')}}</strong>
+                                    <a href="javascript:void(0)" class="alert-link">{{ Session::get('after_save.text1') }}</a> {{ Session::get('after_save.text2') }}
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <form action="{{route('admin.insertBuilding')}}" method="POST" class="form-horizontal">
+                        {{ csrf_field() }}
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Nama</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Nama" placeholder="Nama">
+                                    <input type="text" name="nama_bangun" class="form-control" id="nama_bangun" placeholder="Nama">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Jenis</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Jenis" placeholder="Jenis">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail" class="col-sm-2 control-label">Jumlah Penduduk</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Jumlah" placeholder="Jumlah Penduduk">
+                                    <input type="text" name ="jenis"class="form-control" id="jenis" placeholder="Jenis">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Alamat</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Alamat" placeholder="Alamat">
+                                    <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Alamat">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Latitude</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Latitude" >
+                                    <input type="text"name="latitude"class="form-control" id="latitude" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Longitude</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Longitude" placeholder="Longitude">
+                                    <input type="text" class="form-control" name="longitude" id="longitude" placeholder="Longitude">
                                 </div>
                             </div>
 
@@ -92,10 +98,10 @@
         var geocodeServices = L.esri.Geocoding.geocodeService();
         var shapes = L.featureGroup().addTo(mymap);
         mymap.on("click",function(event){
-            $("#Latitude").val(event.latlng.lat.toString()) ;
-            $("#Longitude").val(event.latlng.lng.toString())
+            $("#latitude").val(event.latlng.lat.toString()) ;
+            $("#longitude").val(event.latlng.lng.toString())
             geocodeServices.reverse().latlng(event.latlng).run(function(error,result){
-                $("#Alamat").val(result.address.Match_addr);
+                $("#alamat").val(result.address.Match_addr);
             })
             console.log(event.latlng.lat.toString()+"test");
         });

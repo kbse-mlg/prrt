@@ -9,11 +9,77 @@ use Illuminate\Support\Facades\DB;
 class InsertData extends Controller
 {
   public function index(){
-        $user = DB::table('users')->paginate(15);
+        $user = DB::table('Building')->paginate(15);
 
         return view('backend.insertindex', ['user' => $user]);
   }
+
+
+
   public function add(){
     return view('backend.insert');
   }
+
+
+
+  public function insertBuilding(Request $request){
+    
+    $validate = \Validator::make($request->all(),[
+            'nama_bangun'      =>  'required',
+            'jenis'            =>  'required',
+            'alamat'           =>  'required',
+            'latitude'         =>  'required',
+            'longitude'        =>  'required'
+    ],
+    $after_save =[
+            'alert' =>  'danger',
+            'title' =>  'Oh wait',
+            'text1' =>  $request->get('nama_bangun'),
+            'text2' =>  'Please Try Again'
+    ]);
+    
+    if($validate->fails()){
+      return redirect()->back()->with('after_save',$after_save);
+    }
+
+    $after_save = [
+            'alert'   => 'success',
+            'title'   => 'God Job!',
+            'text1'  => 'Tambah lagi',
+            'text2'  => 'Atau kembali.'
+        ];
+
+    $insert = [
+            'nama_bangun'        =>  $request->nama_bangun,
+            'jenis'              =>  $request->jenis,
+            'alamat'             =>  $request->alamat,
+            'latitude'           =>  $request->latitude,
+            'longitude'          =>  $request->longitude,
+            'geojson'            => '0'
+
+    ];
+
+    DB::table('Building')->insert($insert);
+    return redirect()->back()->with('after_save',$after_save);
+  }
+
+  public function insertFacility(){
+
+  }
+
+
+  
+  
+  public function insertPenduduk(){
+
+  }
+
+  
+  
+  public function insertRumah(){
+    //To Do, inserting data rumah
+
+  }
+
+  
 }
