@@ -24,31 +24,31 @@
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Nama</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nama_bangun" placeholder="Nama">
+                                    <input type="text" name="nama_bangun" class="form-control" id="nama_bangun" placeholder="Nama">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Jenis</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="jenis" placeholder="Jenis">
+                                    <input type="text" name ="jenis"class="form-control" id="jenis" placeholder="Jenis">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Alamat</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="alamat" placeholder="Alamat">
+                                    <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Alamat">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Latitude</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="latitude" >
+                                    <input type="text"name="latitude"class="form-control" id="latitude" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Longitude</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="longitude" placeholder="Longitude">
+                                    <input type="text" class="form-control" name="longitude" id="longitude" placeholder="Longitude">
                                 </div>
                             </div>
 

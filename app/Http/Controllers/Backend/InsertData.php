@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class InsertData extends Controller
 {
   public function index(){
-        $user = DB::table('users')->paginate(15);
+        $user = DB::table('Building')->paginate(15);
 
         return view('backend.insertindex', ['user' => $user]);
   }
@@ -23,24 +23,24 @@ class InsertData extends Controller
 
 
   public function insertBuilding(Request $request){
-
+    
     $validate = \Validator::make($request->all(),[
-            'nama'      =>  'required',
-            'jenis'     =>  'required',
-            'alamat'    =>  'required',
-            'latitude'  =>  'required',
-            'longitude' =>  'required'
+            'nama_bangun'      =>  'required',
+            'jenis'            =>  'required',
+            'alamat'           =>  'required',
+            'latitude'         =>  'required',
+            'longitude'        =>  'required'
     ],
     $after_save =[
             'alert' =>  'danger',
             'title' =>  'Oh wait',
-            'text1' =>  'Something wrong',
+            'text1' =>  $request->get('nama_bangun'),
             'text2' =>  'Please Try Again'
     ]);
     
-    // if($validate->fails()){
-    //   return redirect()->back()->with('after_save',$after_save);
-    // }
+    if($validate->fails()){
+      return redirect()->back()->with('after_save',$after_save);
+    }
 
     $after_save = [
             'alert'   => 'success',
@@ -54,12 +54,13 @@ class InsertData extends Controller
             'jenis'              =>  $request->jenis,
             'alamat'             =>  $request->alamat,
             'latitude'           =>  $request->latitude,
-            'longitude'          =>  $request->longitude
+            'longitude'          =>  $request->longitude,
+            'geojson'            => '0'
 
     ];
 
-    
-    return redirect()->back()->with($insert);
+    DB::table('Building')->insert($insert);
+    return redirect()->back()->with('after_save',$after_save);
   }
 
   public function insertFacility(){
