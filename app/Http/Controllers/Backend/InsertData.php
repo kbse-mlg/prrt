@@ -63,8 +63,8 @@ class InsertData extends Controller
     return redirect()->back()->with('after_save',$after_save);
   }
 
-  public function insertFacility(){
-
+  public function insertFacility(Request $request){
+    
   }
 
 
