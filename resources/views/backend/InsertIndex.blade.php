@@ -4,6 +4,8 @@
 <div class="row">
     <div class="col-md-12">
         <a href="{{ route('admin.insert') }}" class="btn btn-primary">Tambah</a>
+        <br>
+        <br>
     <div class="box">
     <div class="box-header">
         <h3 class="box-title">List Building</h3>
@@ -28,8 +30,9 @@
                     <th>Alamat</th>
                     <th>Latitude</th>
                     <th>Latitude</th>
+                    <th>Tindakan</th>
                 </tr>
-                <?php $i = 1 ?>
+            <?php $i = 1 ?>
             @foreach($user as $item)
             <tr>
                 <td>{{$i}}</td>
@@ -37,7 +40,7 @@
                 <td>{{$item->alamat}}</td>
                 <td>{{$item->latitude}}</td>
                 <td>{{$item->longitude}}</td>
-            </tr>
+                <td><a href="{{route('admin.addFacility')}}"><i class="fa fa-add"></i>Tambah</a></td>
             <?php $i++; ?>
             @endforeach
             </tbody>

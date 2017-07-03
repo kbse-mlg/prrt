@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="box box-info">
                     <div class="box-header with border">
-                        <h3 class="box-title">Tambah Data</h3>
+                        <h3 class="box-title">Tambah Data Building</h3>
                     </div>
                     @if(Session::has('after_save'))
                         <div class="row">
