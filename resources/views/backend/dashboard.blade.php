@@ -43,7 +43,7 @@
             <span class="info-box-icon bg-green"><i class="fa fa-star"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Fasilitas</span>
+              <span class="info-box-text">Fasiliti</span>
               <span class="info-box-number">405</span>
             </div>
             <!-- /.info-box-content -->
@@ -223,7 +223,12 @@
                          [3.1206331007017742,101.71260058879854],
                          [2.218683588558448, 102.27404594421388],
                          [2.246128563278328, 102.23284721374512],
-                         [1.5296644435081868,103.67754936218262]
+                         [1.5296644435081868,103.67754936218262],
+                         [3.1149766602434115,101.63789838552476],
+                         [3.13640241014748,101.62262052297594],
+                         [3.091664949170504,101.6868218779564],
+                         [2.8281736394861197,101.53644651174547]
+
         ];
         for(var i = 0; i < locations.length;i++){
             L.marker([locations[i][0],locations[i][1]],{icon:buildIcon}).addTo(mymap)
