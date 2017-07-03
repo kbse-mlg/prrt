@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-class InsertData extends Controller
+class InsertController extends Controller
 {
   public function index(){
         $user = DB::table('Building')->paginate(15);
