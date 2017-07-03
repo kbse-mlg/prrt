@@ -45,8 +45,8 @@ class InsertData extends Controller
     $after_save = [
             'alert'   => 'success',
             'title'   => 'God Job!',
-            'text1'  => 'Tambah lagi',
-            'text2'  => 'Atau kembali.'
+            'text1'   => 'Tambah lagi',
+            'text2'   => 'Atau kembali.'
         ];
 
     $insert = [
@@ -63,8 +63,8 @@ class InsertData extends Controller
     return redirect()->back()->with('after_save',$after_save);
   }
 
-  public function insertFacility(){
-
+  public function insertFacility(Request $request){
+    
   }
 
 
@@ -79,6 +79,10 @@ class InsertData extends Controller
   public function insertRumah(){
     //To Do, inserting data rumah
 
+  }
+  public function addFacility(){
+    //Add Building Facility
+    return view('backend.InsertFacility'); 
   }
 
   
