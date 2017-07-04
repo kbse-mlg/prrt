@@ -225,14 +225,14 @@
                          [2.246128563278328, 102.23284721374512],
                          [1.5296644435081868,103.67754936218262],
                          [3.1149766602434115,101.63789838552476],
-                         [3.13640241014748,101.62262052297594],
-                         [3.091664949170504,101.6868218779564],
+                         [3.13640241014748,  101.62262052297594],
+                         [3.091664949170504, 101.6868218779564 ],
                          [2.8281736394861197,101.53644651174547]
 
         ];
         for(var i = 0; i < locations.length;i++){
             L.marker([locations[i][0],locations[i][1]],{icon:buildIcon}).addTo(mymap)
-		    .bindPopup("<b>BillBoard Location</b>");
+		    .bindPopup("<b>BillBoard Location</b><br><b> Population: 340 <b><br><b> Laki-Laki : 134 <b> <br><b>Perempuan : 120<b><br><b>Facility : 1. Parking<br> 2. 3 Unit Lift <br> 3. Surau");
         
         }
 	    L.geoJSON(feature).addTo(mymap);
