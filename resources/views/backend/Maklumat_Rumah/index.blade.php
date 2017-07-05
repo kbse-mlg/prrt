@@ -8,7 +8,7 @@
         <br>
     <div class="box">
     <div class="box-header">
-        <h3 class="box-title">List Building</h3>
+        <h3 class="box-title">List Rumah</h3>
         <div class="box-tools">
             <div class="input-group">
                 <input type="text" style="width:150px" name="table_search" class="form-control input-sm pull-right" placeholder="Search" value="">
@@ -24,25 +24,29 @@
         <table class="table table-hover">
             <tbody>
                 <tr>
-                    
                     <th>No</th>
-                    <th>Building</th>
-                    <th>Alamat</th>
-                    <th>Latitude</th>
-                    <th>Longitude</th>
+                    <th>No Lot</th>
+                    <th>Pemilik</th>
+                    <th>Jumlah Penduduk</th>
+                    <th>Type Rumah</th>
                     <th>Tindakan</th>
                 </tr>
-            <?php $i = 1 ?>
-            @foreach($user as $item)
-            <tr>
-                <td>{{$i}}</td>
-                <td>{{$item->nama_bangun}}</td>
-                <td>{{$item->alamat}}</td>
-                <td>{{$item->latitude}}</td>
-                <td>{{$item->longitude}}</td>
-                <td><a href="{{route('admin.addFacility')}}"><i class="fa fa-add"></i>Tambah Facility</a> || <a href="{{route('admin.indexRumah')}}">Maklumat Rumah</a></td> 
-            <?php $i++; ?>
-            @endforeach
+                <tr>
+                    <td>1</td>
+                    <td>Lot 1</td>
+                    <td>Syazwan bin Mohammed</td>
+                    <td>5</td>
+                    <td>Apartment</td>
+                    <td><a href="">Edit</a> || <a href="">Detail Penduduk</a>  </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Lot 2</td>
+                    <td>Adam bin Ahmad</td>
+                    <td>3</td>
+                    <td>Apartment</td>
+                    <td><a href="">Edit</a> || <a href="{{route('admin.pendudukIndex')}}">Detail Penduduk</a> </td>
+                </tr>
             </tbody>
         </table>
     </div>

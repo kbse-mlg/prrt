@@ -80,9 +80,21 @@ class InsertData extends Controller
     //To Do, inserting data rumah
 
   }
+
+  public function rumahIndex(){
+
+    return view('backend.Maklumat_Rumah.index');
+  }
+
+
   public function addFacility(){
     //Add Building Facility
     return view('backend.InsertFacility'); 
+  }
+
+  public function pendudukIndex(){
+    
+    return view('backend.penduduk.edit');
   }
 
   
