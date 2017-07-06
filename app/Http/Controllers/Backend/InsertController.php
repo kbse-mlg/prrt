@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-class InsertData extends Controller
+class InsertController extends Controller
 {
   public function index(){
-        $user = DB::table('Building')->paginate(15);
+        $user = DB::table('building')->paginate(15);
 
         return view('backend.insertindex', ['user' => $user]);
   }
@@ -59,7 +59,7 @@ class InsertData extends Controller
 
     ];
 
-    DB::table('Building')->insert($insert);
+    DB::table('building')->insert($insert);
     return redirect()->back()->with('after_save',$after_save);
   }
 
