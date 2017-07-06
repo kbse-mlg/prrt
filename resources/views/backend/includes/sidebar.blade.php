@@ -42,6 +42,18 @@
                     <span>Tambah Data</span>
                 </a>
             </li>
+            <li>
+            <a href="{{ route('admin.tambah') }}">
+                    <i class="fa fa-building"></i>
+                    <span>Fasiliti</span>
+                </a>
+            </li>
+            <li>
+            <a href="{{ route('admin.tambah') }}">
+                    <i class="fa fa-person"></i>
+                    <span>Penduduk</span>
+                </a>
+            </li>
 
             <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
 
