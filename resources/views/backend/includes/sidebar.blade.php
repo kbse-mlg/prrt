@@ -50,7 +50,7 @@
             </li>
             <li>
             <a href="{{ route('admin.tambah') }}">
-                    <i class="fa fa-person"></i>
+                    <i class="fa fa-male"></i>
                     <span>Penduduk</span>
                 </a>
             </li>
