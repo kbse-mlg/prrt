@@ -38,7 +38,7 @@
             </li>
             <li>
             <a href="{{ route('admin.tambah') }}">
-                    <i class="fa fa-dashboard"></i>
+                    <i class="fa fa-plus-square-o"></i>
                     <span>Tambah Data</span>
                 </a>
             </li>
@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li>
-            <a href="{{ route('admin.tambah') }}">
+            <a href="{{ route('admin.indexRumah') }}">
                     <i class="fa fa-male"></i>
                     <span>Penduduk</span>
                 </a>
