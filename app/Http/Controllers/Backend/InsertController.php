@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class InsertController extends Controller
 {
   public function index(){
-        $user = DB::table('building')->paginate(15);
+        $user = DB::table('building')->get();
 
         return view('backend.insertindex', ['user' => $user]);
   }
