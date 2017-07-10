@@ -5,3 +5,4 @@ Route::post('building/','InsertController@insertBuilding')->name('insertBuilding
 Route::get('facility','InsertController@addFacility')->name('addFacility');
 Route::get('rumah','InsertController@rumahIndex')->name('indexRumah');
 Route::get('penduduk','InsertController@pendudukIndex')->name('pendudukIndex');
+Route::get('addfasility/{id}','InsertController@buildingFacility')->name('buildingFacility');

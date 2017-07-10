@@ -6,25 +6,27 @@
             <div class="box-header">
                 <h3 class="box-title">Maklumat Bangunan</h3>
             </div>
+           
             <form action="{{route('admin.insertBuilding')}}" method="POST" class="form-horizontal">
                 {{ csrf_field() }}
-                <div class="box-body">
+                 @foreach($data as $item)
+                     <div class="box-body">
                     <div class="form-group">
                         <label for="inputEmail" class="col-sm-2 control-label">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nama_bangun" class="form-control" id="nama_bangun" placeholder="Nama">
+                            <label for="inputEmail" class="col-sm-10 control-label">{{$item->nama_bangun}}</label>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail" class="col-sm-2 control-label">Jenis</label>
                         <div class="col-sm-10">
-                            <input type="text" name="jenis" class="form-control" id="jenis" placeholder="Jenis">
+                            <label for="inputEmail" class="col-sm-2 control-label">{{$item->jenis}}</label>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail" class="col-sm-2 control-label">Alamat</label>
                         <div class="col-sm-10">
-                            <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Alamat">
+                            <label for="inputEmail" class="col-sm-10 control-label">{{$item->alamat}}</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -40,6 +42,8 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
+               
             </form>
         </div>
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
+use View;
 class InsertController extends Controller
 {
   public function index(){
@@ -61,6 +61,10 @@ class InsertController extends Controller
 
     DB::table('building')->insert($insert);
     return redirect()->back()->with('after_save',$after_save);
+  }
+  public function buildingFacility($id){
+    $data = DB::table('building')->where('id',$id)->get();
+    return View::make('backend.InsertFacility')->with('data',$data);
   }
 
   public function insertFacility(Request $request){

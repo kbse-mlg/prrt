@@ -40,7 +40,7 @@
                 <td>{{$item->alamat}}</td>
                 <td>{{$item->latitude}}</td>
                 <td>{{$item->longitude}}</td>
-                <td><a href="{{route('admin.addFacility')}}"><i class="fa fa-add"></i>Tambah Facility</a> || <a href="{{route('admin.indexRumah')}}">Maklumat Rumah</a></td> 
+                <td><a href="{{route('admin.buildingFacility',$item->id)}}"><i class="fa fa-add"></i>Tambah Facility</a> || <a href="{{route('admin.indexRumah')}}">Maklumat Rumah</a></td> 
             <?php $i++; ?>
             @endforeach
             </tbody>
