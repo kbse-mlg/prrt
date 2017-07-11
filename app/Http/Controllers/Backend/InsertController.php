@@ -9,7 +9,7 @@ use View;
 class InsertController extends Controller
 {
   public function index(){
-        $user = DB::table('building')->get();
+        $user = DB::table('Building')->get();
 
         return view('backend.insertindex', ['user' => $user]);
   }
@@ -62,13 +62,49 @@ class InsertController extends Controller
     DB::table('building')->insert($insert);
     return redirect()->back()->with('after_save',$after_save);
   }
+
   public function buildingFacility($id){
-    $data = DB::table('building')->where('id',$id)->get();
+    $data = DB::table('Building')->where('id',$id)->get();
     return View::make('backend.InsertFacility')->with('data',$data);
   }
 
   public function insertFacility(Request $request){
+    $validate = \Validator::make($request->all(),[
+            'nama'                =>  'required',
+            'jenis'               =>  'required',
+            'condition'           =>  'required',
+            'year'                =>  'required',
+            'harga'               =>  'required'
+    ],
+    $after_save =[
+            'alert' =>  'danger',
+            'title' =>  'Oh wait',
+            'text1' =>   $request->condition,
+            'text2' =>  'Please Try Again'
+    ]);
     
+    if($validate->fails()){
+      return redirect()->back()->with('after_save',$after_save);
+    }
+
+    $after_save = [
+            'alert'   => 'success',
+            'title'   => 'God Job!',
+            'text1'   => 'Tambah lagi',
+            'text2'   => 'Atau kembali.'
+        ];
+
+    $insert = [
+            'id_building'        =>  $request->id_building,
+            'Nama'               =>  $request->nama,
+            'jenis'              =>  $request->jenis,
+            'condition'          =>  $request->condition,
+            'tahun'              =>  $request->year,
+            'harga'              =>  $request->harga
+    ];
+
+    DB::table('Facility')->insert($insert);
+    return redirect()->back()->with('after_save',$after_save);
   }
 
 
