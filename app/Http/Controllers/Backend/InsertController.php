@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
+use View;
 class InsertController extends Controller
 {
   public function index(){
-        $user = DB::table('building')->get();
+        $user = DB::table('Building')->get();
 
         return view('backend.insertindex', ['user' => $user]);
   }
@@ -63,8 +63,48 @@ class InsertController extends Controller
     return redirect()->back()->with('after_save',$after_save);
   }
 
+  public function buildingFacility($id){
+    $data = DB::table('Building')->where('id',$id)->get();
+    return View::make('backend.InsertFacility')->with('data',$data);
+  }
+
   public function insertFacility(Request $request){
+    $validate = \Validator::make($request->all(),[
+            'nama'                =>  'required',
+            'jenis'               =>  'required',
+            'condition'           =>  'required',
+            'year'                =>  'required',
+            'harga'               =>  'required'
+    ],
+    $after_save =[
+            'alert' =>  'danger',
+            'title' =>  'Oh wait',
+            'text1' =>   $request->condition,
+            'text2' =>  'Please Try Again'
+    ]);
     
+    if($validate->fails()){
+      return redirect()->back()->with('after_save',$after_save);
+    }
+
+    $after_save = [
+            'alert'   => 'success',
+            'title'   => 'God Job!',
+            'text1'   => 'Tambah lagi',
+            'text2'   => 'Atau kembali.'
+        ];
+
+    $insert = [
+            'id_building'        =>  $request->id_building,
+            'Nama'               =>  $request->nama,
+            'jenis'              =>  $request->jenis,
+            'condition'          =>  $request->condition,
+            'tahun'              =>  $request->year,
+            'harga'              =>  $request->harga
+    ];
+
+    DB::table('Facility')->insert($insert);
+    return redirect()->back()->with('after_save',$after_save);
   }
 
 
@@ -81,9 +121,17 @@ class InsertController extends Controller
 
   }
 
-  public function rumahIndex(){
-
-    return view('backend.Maklumat_Rumah.index');
+  public function rumahIndex($id){
+    $data = DB::table('rumah')->where('id_building',$id)->get();
+    if($data == null){
+      return view('backend.Maklumat_Rumah.index')->with('no_data',"No Data");
+    }else{
+      return view('backend.Maklumat_Rumah.index',['data'=>$data])->with('id',$id);
+    }
+    
+  }
+  public function newRumah($id){
+      return view('backend.Maklumat_Rumah.add')->with('id',$id);
   }
 
 

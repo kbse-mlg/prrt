@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li>
-            <a href="{{ route('admin.indexRumah') }}">
+            <a href="">
                     <i class="fa fa-male"></i>
                     <span>Penduduk</span>
                 </a>

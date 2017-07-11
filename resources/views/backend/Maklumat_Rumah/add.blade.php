@@ -7,7 +7,7 @@
 </div>
 <div class="box box-primary">
     <div class="box-header">
-        <h3 class="box-header">Tambah Maklumat Facility</h3>
+        <h3 class="box-header">Tambah Maklumat Rumah</h3>
     </div>
     @if(Session::has('after_save'))
     <div class="row">
@@ -23,9 +23,7 @@
     @endif
     <form action="{{route('admin.insertFacility')}}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
-        @foreach($data as $item)
-            <input type="hidden" value="{{$item->id}}" name="id_building">
-        @endforeach
+       <input type="hidden" value="{{$id}}" name="id_building">
         <div class="box-body">
             <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">Nama Facility</label>

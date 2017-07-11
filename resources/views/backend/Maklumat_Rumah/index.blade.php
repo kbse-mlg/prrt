@@ -3,9 +3,10 @@
 
 <div class="row">
     <div class="col-md-12">
-        <a href="{{ route('admin.insert') }}" class="btn btn-primary">Tambah</a>
+        <a href="" class="btn btn-primary">Tambah</a>
         <br>
         <br>
+        
     <div class="box">
     <div class="box-header">
         <h3 class="box-title">List Rumah</h3>
@@ -20,38 +21,36 @@
             </div>
         </div>
     </div>
+
     <div class="box-body table-responsive no-padding">
-        <table class="table table-hover">
-            <tbody>
-                <tr>
-                    <th>No</th>
-                    <th>No Lot</th>
-                    <th>Pemilik</th>
-                    <th>Jumlah Penduduk</th>
-                    <th>Type Rumah</th>
-                    <th>Tindakan</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Lot 1</td>
-                    <td>Syazwan bin Mohammed</td>
-                    <td>5</td>
-                    <td>Apartment</td>
-                    <td><a href="">Edit</a> || <a href="">Detail Penduduk</a>  </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Lot 2</td>
-                    <td>Adam bin Ahmad</td>
-                    <td>3</td>
-                    <td>Apartment</td>
-                    <td><a href="">Edit</a> || <a href="{{route('admin.pendudukIndex')}}">Detail Penduduk</a> </td>
-                </tr>
-            </tbody>
-        </table>
+        @if(Session::has('no_data'))
+            <div>No Data</div>
+        @else
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th>No</th>
+                        <th>No Lot</th>
+                        <th>Type</th>
+                        <th>Jumlah Penduduk</th>
+                        <th>Type Rumah</th>
+                        <th>Tindakan</th>
+                    </tr>
+                </tbody>
+                <tbody>
+                    @foreach($data as $item)
+                    <tr>
+                        <td></td>
+                        <td>{{$item->type}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
+        
     </div>
-</div>
     </div>
-</div>
+    </div>
+    </div>
  
 @endsection
