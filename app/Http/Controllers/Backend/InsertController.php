@@ -121,9 +121,17 @@ class InsertController extends Controller
 
   }
 
-  public function rumahIndex(){
-
-    return view('backend.Maklumat_Rumah.index');
+  public function rumahIndex($id){
+    $data = DB::table('rumah')->where('id_building',$id)->get();
+    if($data == null){
+      return view('backend.Maklumat_Rumah.index')->with('no_data',"No Data");
+    }else{
+      return view('backend.Maklumat_Rumah.index',['data'=>$data])->with('id',$id);
+    }
+    
+  }
+  public function newRumah($id){
+      return view('backend.Maklumat_Rumah.add')->with('id',$id);
   }
 
 
