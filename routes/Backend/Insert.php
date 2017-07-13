@@ -8,3 +8,5 @@ Route::get('penduduk','InsertController@pendudukIndex')->name('pendudukIndex');
 Route::get('addfasility/{id}','InsertController@buildingFacility')->name('buildingFacility');
 Route::post('insertfasility','InsertController@insertFacility')->name('insertFacility');
 Route::get('newrumah/{id}','InsertController@newRumah')->name('newRumah');
+Route::get('penduduk/{id}','InsertController@insertPenduduk')->name('insertPenduduk');
+Route::post('newpenduduk','InsertController@newPenduduk')->name('addPenduduk');
