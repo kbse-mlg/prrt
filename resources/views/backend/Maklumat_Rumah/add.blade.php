@@ -21,6 +21,7 @@
         </div>
     </div>
     @endif
+    
     <form action="{{route('admin.insertFacility')}}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
        <input type="hidden" value="{{$id}}" name="id_building">

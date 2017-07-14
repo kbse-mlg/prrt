@@ -1,3 +1,6 @@
+<style>
+    .main-sidebar{background-color:#357ca5 !important }
+</style>
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -28,12 +31,12 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">{{ trans('menus.backend.sidebar.general') }}</li>
+            
 
-            <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
+            <li class="">
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="fa fa-dashboard"></i>
-                    <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
+                    <span class="logo-mini">{{ trans('menus.backend.sidebar.dashboard') }}</span>
                 </a>
             </li>
             <li>
@@ -55,7 +58,7 @@
                 </a>
             </li>
 
-            <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
+            
 
             @role(1)
             <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">

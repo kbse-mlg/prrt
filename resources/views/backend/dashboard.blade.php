@@ -7,6 +7,9 @@
 @endsection
 
 @section('content')
+<style> 
+    .main-sidebar {background-color:##357ca5 !important}
+</style>
 <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
