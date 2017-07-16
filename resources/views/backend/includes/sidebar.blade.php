@@ -57,6 +57,12 @@
                     <span>Penduduk</span>
                 </a>
             </li>
+            <li>
+            <a href="">
+                    <i class="fa fa-male"></i>
+                    <span>Manage PRR</span>
+            </a>
+            </li>
 
             
 
