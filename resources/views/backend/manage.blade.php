@@ -1,6 +1,8 @@
 @extends('backend.layouts.app')
 @section('content')
-
+ @if(Session::has('value'))
+     {{$value}}
+ @endif
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">Senarai Bangun PRR</h3>
@@ -22,17 +24,23 @@
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
 <script src="js/app.js" type="text/javascript"></script>
     <script>
-    var dataSet = [["PRR 1","System Architect","EdinBurgh","5421","2011/04/25", '<a href="">Edit</a>']];
+    var url = "'admin.editManage'";
+    var dataSet = [
+        ["PRR 1","Johor","Segamat","Buloh Kasap","200","RM 2700" ,'<a href="{{route("admin.manageEdit","perlis")}}">Edit</a>'],
+        ["PRR 2","Johor","Batu Pahat","Penggaram","130","RM 2600",'<a href="{{}}">Edit</a>']
+        
+        ];
     $(document).ready(function(){
         $('#example').DataTable({
             data:dataSet,
             columns:[
                 {title:"Name"},
-                {title:"Position"},
+                {title:"Negeri"},
+                {title:"Parlimen"},
                 {title:"Dun"},
-                {title:"Position"},
-                {title:"Position"},
-                {title:"Position"}]
+                {title:"Population"},
+                {title:"Average Income"},
+                {title:"Tindakan"}]
         })
     })
 </script>

@@ -195,5 +195,9 @@ class InsertController extends Controller
     return view('backend.manage');
   }
 
+  public function manageEdit($id){
+    return view('backend.manage')->with('id',$id);
+  }
+
   
 }
