@@ -10,3 +10,4 @@ Route::post('insertfasility','InsertController@insertFacility')->name('insertFac
 Route::get('newrumah/{id}','InsertController@newRumah')->name('newRumah');
 Route::get('penduduk/{id}','InsertController@insertPenduduk')->name('insertPenduduk');
 Route::post('newpenduduk','InsertController@newPenduduk')->name('addPenduduk');
+Route::get('manage','InsertController@manage')->name('manage');

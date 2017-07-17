@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li>
-            <a href="">
+            <a href="{{route('admin.manage')}}">
                     <i class="fa fa-male"></i>
                     <span>Manage PRR</span>
             </a>

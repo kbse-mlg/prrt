@@ -191,5 +191,9 @@ class InsertController extends Controller
     return view('backend.penduduk.edit');
   }
 
+  public function manage(){
+    return view('backend.manage');
+  }
+
   
 }
