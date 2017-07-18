@@ -11,4 +11,4 @@ Route::get('newrumah/{id}','InsertController@newRumah')->name('newRumah');
 Route::get('penduduk/{id}','InsertController@insertPenduduk')->name('insertPenduduk');
 Route::post('newpenduduk','InsertController@newPenduduk')->name('addPenduduk');
 Route::get('manage','InsertController@manage')->name('manage');
-Route::get('manageedit/{$id}','InsertController@manageEdit')->name('manageEdit');
+Route::get('manageedit/{id}','InsertController@manageEdit')->name('manageEdit');

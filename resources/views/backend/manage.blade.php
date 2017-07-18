@@ -1,8 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
- @if(Session::has('value'))
-     {{$value}}
- @endif
+ 
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">Senarai Bangun PRR</h3>
@@ -26,9 +24,10 @@
     <script>
     var url = "'admin.editManage'";
     var dataSet = [
-        ["PRR 1","Johor","Segamat","Buloh Kasap","200","RM 2700" ,'<a href="{{route("admin.manageEdit","perlis")}}">Edit</a>'],
-        ["PRR 2","Johor","Batu Pahat","Penggaram","130","RM 2600",'<a href="{{}}">Edit</a>']
-        
+        ["PRR 1","Johor","Segamat","Buloh Kasap","200","RM 2700" ,'<a href="{{route("admin.manageEdit","Buloh Kasap")}}">Detail</a>'],
+        ["PRR 2","Johor","Batu Pahat","Penggaram","130","RM 2600",'<a href="{{route("admin.manageEdit","Buloh Kasap")}}">Detail</a>'],
+        ["PRR 3","Johor","Batu Pahat","Penggaram","200","RM 2600",'<a href="{{route("admin.manageEdit","Buloh Kasap")}}">Detail</a>'],
+        ["PRR 4","Selangor","Shah Alam","Batu Tiga","143","RM 3000",'<a href="{{route("admin.manageEdit","Buloh Kasap")}}">Detail</a>']    
         ];
     $(document).ready(function(){
         $('#example').DataTable({
