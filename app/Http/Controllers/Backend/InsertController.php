@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use View;
 class InsertController extends Controller
 {
+  
   public function index(){
         $user = DB::table('Building')->get();
 
@@ -110,9 +111,54 @@ class InsertController extends Controller
 
   
   
-  public function insertPenduduk(){
-
+  public function insertPenduduk($id){
+    return view('backend.penduduk.insert')->with('id',$id);
   }
+
+  public function newPenduduk(Request $request){
+     $validate = \Validator::make($request->all(),[
+            'no_ic'      => 'required',
+            'nama'       => 'required',
+            'jantina'    => 'required',
+            'umur'       => 'required',
+            'race'       => 'required',
+            'religion'   => 'required',
+            'income'     => 'required'
+    ],
+    $after_save =[
+            'alert' =>  'danger',
+            'title' =>  'Oh wait',
+            'text1' =>  'something wrong',
+            'text2' =>  'Please Try Again'
+    ]);
+    
+    if($validate->fails()){
+      return redirect()->back()->with('after_save',$after_save);
+    }
+
+    $after_save = [
+            'alert'   => 'success',
+            'title'   => 'God Job!',
+            'text1'   => 'Tambah lagi',
+            'text2'   => 'Atau kembali.'
+        ];
+
+    $insert = [
+            'id_rumah'          =>  $request->id_rumah,
+            'no_ic'             =>  $request->no_ic,
+            'nama'              =>  $request->nama,
+            'jantina'           =>  $request->jantina,
+            'umur'              =>  $request->umur,
+            'race'              =>  $request->race,
+            'religion'          =>  $request->religion,
+            'income'            =>  $request->income,
+            'status'            =>  $request->status
+    ];
+
+    DB::table('penduduk')->insert($insert);
+    return redirect()->back()->with('after_save',$after_save);
+  }
+  
 
   
   
@@ -143,6 +189,14 @@ class InsertController extends Controller
   public function pendudukIndex(){
     
     return view('backend.penduduk.edit');
+  }
+
+  public function manage(){
+    return view('backend.manage');
+  }
+
+  public function manageEdit($id){
+    return view('backend.detail')->with('id',$id);
   }
 
   

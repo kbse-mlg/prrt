@@ -18,6 +18,7 @@ class CreatePendudukTable extends Migration {
 			$table->string('religion');
 			$table->string('status');
 			$table->integer('id_rumah')->unsigned();
+			$table->double('income');
 		});
 	}
 

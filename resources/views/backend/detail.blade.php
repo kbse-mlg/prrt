@@ -1,160 +1,78 @@
 @extends('backend.layouts.app')
-
-@section('page-header')
-    <h1>
-        {{ trans('strings.backend.dashboard.title') }}
-    </h1>
-@endsection
-
 @section('content')
-<style> 
-    .main-sidebar {background-color:##357ca5 !important}
-</style>
-<div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="fa fa-building"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Bangunan</span>
-              <span class="info-box-number">343</span>
+    <section class="content invoice">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header"><i class="fa fa-building"></i>Building PRR Dun {{$id}}</h2>
             </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-user-circle-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Penduduk</span>
-              <span class="info-box-number">41,410</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="fa fa-star"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Fasiliti</span>
-              <span class="info-box-number">405</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Kepadatan</span>
-              <span class="info-box-number">20<smal>%</smal></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-      </div>
-<div class="row">
-    <div class="col-md-8">
-        <div class="box box-info">
-            <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('strings.backend.map.label') }}</h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div><!-- /.box tools -->
-        </div><!-- /.box-header -->
-        <div class="box-body no-padding">
-            <div id="mapid"style="height: 600px;"></div>
-                {{-- <div class="col-md-10 col-sm-9"  style="padding:0 0 0 0">
-                    <!-- Map will be created here -->
-                    <div id="mapid"style="height: 600px;"></div>
+            <div class="row invoice-info">
+                <div class="col-sm-3 invoice-col">
+                    Nama <br>
+                    <strong>PRR 1</strong><br>
+                    <address>
+                    Jl Lorong Aman, <br>
+                    {{$id}}, 404600 
+                    </address>
                 </div>
-                <!-- /.col -->
-                <div class="col-md-2 col-sm-3" style="padding:0 0 0 0">
-                  <div class="pad box-pane-right bg-blue" style="min-height: 280px">
-                    <div class="description-block margin-bottom">
-                      <div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
-                      <h5 class="description-header">8390</h5>
-                      <span class="description-text">Bangunan</span>
-                    </div>
-                    <!-- /.description-block -->
-                    <div class="description-block margin-bottom" style="height:433px">
-                      <div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
-                      <h5 class="description-header">3023</h5>
-                      <span class="description-text">Penduduk</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                </div> --}}
-                <!-- /.col -->
-              </div>
-        </div><!-- /.box-body -->
-    </div>
-    <div class="col-md-4">
-    <div class="box box-default">
-            <div class="box-header with-border">
-              <h3 class="box-title">Maklumat</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
+                <div class="col-sm-3 invoice-col">
+                    Population : 126
+                    Average Income : RM 2600
+                </div>
             </div>
-            <!-- /.box-header -->
-            <div class="box-footer no-padding">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Agama
-                    <div class="chart-responsive">
-                    <canvas id="religionChart" height="170" width="328" style="width: 328px; min-height:170px;"></canvas>
-                  </div>
-                <li><a href="#">Keturunan
-                <div class="chart-responsive">
-                        <canvas id="etnicChart" height="173" width="328" style="width: 328px; min-height: 173px;"></canvas>
-                    </div>
-                </li>
-              </ul>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Bil</th>
+                        <th>Fasility</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Road</td>
+                            <td><span class="label label-danger">Bad</span></td>
+                            <td>RM 300,000</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Lift</td>
+                            <td><span class="label label-success">Good</span></td>
+                            <td>RM 100,000</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Surau</td>
+                            <td><span class="label label-primary">Normal</span></td>
+                            <td>RM 300,000</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Taman</td>
+                            <td><span class="label label-danger">Bad</span></td>
+                            <td>RM 200,000</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <!-- /.footer -->
-          </div>
-    </div>
-    </div>
-</div>
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div><!-- /.box tools -->
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            {!! history()->render() !!}
-        </div><!-- /.box-body -->
-    </div><!--box box-success-->
+        </div>
+        <div class="row">
+            <div style="height: 400px;" id="mapid"></div>
+        </div>
+    </section>
 @endsection
-
 @section('after-scripts')
-    
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
         integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
         crossorigin=""></script>
     <script src="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
     <script>
-        var mymap = L.map('mapid').setView([3.505196750176222, 102.26580619812013], 8);
+        var mymap = L.map('mapid').setView([5.021415738239516,100.48139840997729 ], 15);
         
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
             maxZoom: 18,
@@ -24015,83 +23933,8 @@
         var randomScalingFactor = function() {
             return Math.round(Math.random() * 100);
         };
-
-        var religionConfig = {
-            type: 'pie',
-            data: {
-                datasets: [{
-                    data: [
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        
-                    ],
-                    backgroundColor: [
-                        'rgb(255, 159, 64)',
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)'
-                    ],
-                    label: 'Dataset 1'
-                }],
-                labels: [
-                    "Islam",
-                    "Hindhu",
-                    "Budha",
-                    "Lain-Lain"
-                    
-                ]
-            },
-            options: {
-                responsive: true,
-                legend: {
-                    position: 'right',
-                },
-            }
-        };
-
-        var etnicConfig = {
-            type: 'pie',
-            data: {
-                datasets: [{
-                    data: [
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                    ],
-                    backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 159, 64)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
-                    ],
-                    label: 'Dataset 1'
-                }],
-                labels: [
-                    "Melayu",
-                    "Cina",
-                    "India",
-                    "Lain-lain"
-                ]
-            },
-            options: {
-                responsive: true,
-                legend: {
-                    position: 'right',
-                },
-            }
-        };
-       
-        var religionCtx = document.getElementById("religionChart").getContext("2d");
-        window.religionPie = new Chart(religionCtx, religionConfig);
-        var etnicCtx = document.getElementById("etnicChart").getContext("2d");
-        window.etnicPie = new Chart(etnicCtx, etnicConfig);
     </script>
-
 @endsection
-
 @section('after-styles')
     <link rel="stylesheet" href="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"

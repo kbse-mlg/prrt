@@ -32,17 +32,21 @@
                         <th>No</th>
                         <th>No Lot</th>
                         <th>Type</th>
-                        <th>Jumlah Penduduk</th>
-                        <th>Type Rumah</th>
+                        <th>Status</th>
                         <th>Tindakan</th>
                     </tr>
                 </tbody>
+                <?php $i = 1 ?>
                 <tbody>
                     @foreach($data as $item)
                     <tr>
-                        <td></td>
+                        <td>{{$i}}</td>
+                        <td>{{$item->no_lot}}</td>
                         <td>{{$item->type}}</td>
+                        <td>{{$item->status}}</td>
+                        <td> <a href="{{route('admin.insertPenduduk',$item->id)}}">Tambah Penduduk</a> </td>
                     </tr>
+                    <?php $i++; ?>
                     @endforeach
                 </tbody>
             </table>
