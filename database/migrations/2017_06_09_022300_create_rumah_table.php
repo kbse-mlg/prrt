@@ -19,6 +19,6 @@ class CreateRumahTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('rumah');
+		Schema::dropIfExists('rumah');
 	}
 }

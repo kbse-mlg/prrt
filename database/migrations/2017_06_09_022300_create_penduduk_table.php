@@ -24,6 +24,6 @@ class CreatePendudukTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('penduduk');
+		Schema::dropIfExists('penduduk');
 	}
 }

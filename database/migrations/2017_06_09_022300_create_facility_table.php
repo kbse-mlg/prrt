@@ -20,6 +20,6 @@ class CreateFacilityTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('facility');
+		Schema::dropIfExists('facility');
 	}
 }
