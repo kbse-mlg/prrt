@@ -41,7 +41,8 @@
                     "render":function(data, type, row, meta){
                         if(type === 'display'){
                             console.log(data);
-                            data =  '<a href="{{route("admin.manageEdit",'+data+')}}">Edit</a>';
+                            
+                            data =  '<a href="/prrt/public/admin/manageedit/'+data+'">Edit</a>';
                         }
                         return data;
                     }

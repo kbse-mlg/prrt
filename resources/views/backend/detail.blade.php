@@ -6,7 +6,7 @@
                 <h2 class="page-header"><i class="fa fa-building"></i>Building PRR Dun {{$id}}</h2>
             </div>
             <div class="row invoice-info">
-                <div class="col-sm-3 invoice-col">
+                <div class="col-sm-4 invoice-col">
                     Nama <br>
                     <strong>PRR 1</strong><br>
                     <address>
@@ -14,13 +14,16 @@
                     {{$id}}, 404600 
                     </address>
                 </div>
-                <div class="col-sm-3 invoice-col">
+                <div class="col-sm-4 invoice-col">
                     Population : 126 <br>
                     Average Income : RM 2600
                 </div>
             </div>
         </div>
         <div class="row">
+            <div class="col-xs-12 pull-right">
+                <a href="{{ route('admin.insert') }}" class="btn btn-primary">Tambah</a>
+            </div>
             <div class="col-xs-12 table-responsive">
                 <table class="table table-striped">
                     <thead>
