@@ -15,7 +15,6 @@ class CreateBuildingTable extends Migration {
 			$table->string('negeri',500);
             $table->string('parlimen',500);
             $table->string('dun',500);
-			$table->string('tes',400);
 			$table->float('latitude');
 			$table->float('longitude');
 			$table->text('geojson');

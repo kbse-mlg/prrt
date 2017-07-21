@@ -40,13 +40,12 @@
                 </a>
             </li>
             <li>
-            <a href="{{ route('admin.tambah') }}">
-                    <i class="fa fa-plus-square-o"></i>
-                    <span>Tambah Data</span>
-                </a>
-            </li>
+             <a href="{{route('admin.manage')}}">
+                    <i class="fa fa-male"></i>
+                    <span>Manage PPR</span>
+            </a>
             <li>
-            <a href="{{ route('admin.tambah') }}">
+            <a href="">
                     <i class="fa fa-building"></i>
                     <span>Fasiliti</span>
                 </a>
@@ -58,10 +57,7 @@
                 </a>
             </li>
             <li>
-            <a href="{{route('admin.manage')}}">
-                    <i class="fa fa-male"></i>
-                    <span>Manage PRR</span>
-            </a>
+           
             </li>
 
             

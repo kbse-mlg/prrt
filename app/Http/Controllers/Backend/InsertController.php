@@ -10,9 +10,9 @@ class InsertController extends Controller
 {
   
   public function index(){
-        $user = DB::table('Building')->get();
+        $user = DB::table('building')->get();
 
-        return view('backend.insertindex', ['user' => $user]);
+        return response()->json(["data"=> $user]);
   }
 
 
@@ -26,7 +26,7 @@ class InsertController extends Controller
   public function insertBuilding(Request $request){
     
     $validate = \Validator::make($request->all(),[
-            'nama_bangun'      =>  'required',
+            'nama'      =>  'required',
             'jenis'            =>  'required',
             'alamat'           =>  'required',
             'latitude'         =>  'required',
@@ -51,11 +51,14 @@ class InsertController extends Controller
         ];
 
     $insert = [
-            'nama_bangun'        =>  $request->nama_bangun,
+            'nama'               =>  $request->nama,
             'jenis'              =>  $request->jenis,
             'alamat'             =>  $request->alamat,
             'latitude'           =>  $request->latitude,
             'longitude'          =>  $request->longitude,
+            'parlimen'           =>  $request->parlimen,
+            'dun'                =>  $request->dun,
+            'negeri'             =>  $request->negeri,
             'geojson'            => '0'
 
     ];
