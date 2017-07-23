@@ -34,12 +34,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Jenis Facility</label>
-                <div class="col-sm-10">
-                    <input type="text" name="jenis" class="form-control" id="jenis" placeholder="Jenis">
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">Condition</label>
                 <div class="col-sm-10">
                     <select name="condition" id="" class="form-control">

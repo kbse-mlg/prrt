@@ -3,12 +3,12 @@
  
 <div class="box">
     <div class="box-header">
-         <a href="{{ route('admin.insert') }}" class="btn btn-primary">Tambah</a>
+         <a href="{{ route('admin.insertPenduduk',$user->id) }}" class="btn btn-primary">Tambah</a>
          <br>
          <br>
-        <h3 class="box-title">Senarai Bangun PRR</h3>
+        <h3 class="box-title">Senarai Penduduk Bangun {{$user->nama}}</h3>
     </div>
-    
+    <input type="hidden" value="">
     <div class="box-body table-responsive">
         <table id="example" class="display" width="100%">
             
@@ -30,13 +30,15 @@
 
     $(document).ready(function(){
        $('#example').DataTable({
-            "ajax": '{{route("admin.tambah")}}',
+            "ajax": '{{route("admin.listPenduduk",$user->id)}}',
             "columns": [
-                { "data": "nama",title:"Nama" },
-                { "data":"jenis",title:"Jenis"},
-                {"data":"negeri",title:"Negeri"},
-                {"data":"parlimen",title:"Parlimen"},
-                {"data":"dun",title:"Dun"},
+                { "data": "no_ic",title:"No Ic" },
+                { "data":"nama",title:"Nama"},
+                {"data":"jantina",title:"Jantina"},
+                {"data":"umur",title:"Umur"},
+                {"data":"race",title:"Race"},
+                {"data":"religion",title:"Agama"},
+                {"data":"income",title:"Total Income"},
                 {"data":"id",title:"Action", 
                     "render":function(data, type, row, meta){
                         if(type === 'display'){

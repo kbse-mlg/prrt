@@ -3,26 +3,27 @@
     <section class="content invoice">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="page-header"><i class="fa fa-building"></i>Building PRR Dun {{$id}}</h2>
+                <h2 class="page-header"><i class="fa fa-building"></i>Building PRR Dun {{$user->parlimen}}</h2>
             </div>
-            <div class="row invoice-info">
-                <div class="col-sm-4 invoice-col">
+            
+        </div>
+        <div class="row ">
+                <div class="col-xs-4 ">
                     Nama <br>
                     <strong>PRR 1</strong><br>
                     <address>
-                    Jl Lorong Aman, <br>
-                    {{$id}}, 404600 
+                    {{$user->alamat}}
                     </address>
                 </div>
-                <div class="col-sm-4 invoice-col">
-                    Population : 126 <br>
-                    Average Income : RM 2600
+                <div class="col-xs-4 invoice-col">
+                    Population : <a href="{{route('admin.pendudukIndex',$user->id)}}">126</a> <br>
+                    Average Income : RM 2600 <br>
+                    Amount Rumah   : <a href="{{route('admin.indexRumah',$user->id)}}">100 Unit</a>
                 </div>
             </div>
-        </div>
         <div class="row">
             <div class="col-xs-12 pull-right">
-                <a href="{{ route('admin.insert') }}" class="btn btn-primary">Tambah</a>
+                <a href="{{ route('admin.buildingFacility',$user->id) }}" class="btn btn-primary">Tambah</a>
             </div>
             <div class="col-xs-12 table-responsive">
                 <table class="table table-striped">
@@ -42,19 +43,19 @@
                             <td>RM 300,000</td>
                         </tr>
                         <tr>
-                            <td>1</td>
+                            <td>2</td>
                             <td>Lift</td>
                             <td><span class="label label-success">Good</span></td>
                             <td>RM 100,000</td>
                         </tr>
                         <tr>
-                            <td>1</td>
+                            <td>3</td>
                             <td>Surau</td>
                             <td><span class="label label-primary">Normal</span></td>
                             <td>RM 300,000</td>
                         </tr>
                         <tr>
-                            <td>1</td>
+                            <td>4</td>
                             <td>Taman</td>
                             <td><span class="label label-danger">Bad</span></td>
                             <td>RM 200,000</td>

@@ -1,60 +1,58 @@
 @extends('backend.layouts.app')
 @section('content')
-
-<div class="row">
-    <div class="col-md-12">
-        <a href="" class="btn btn-primary">Tambah</a>
-        <br>
-        <br>
-        
-    <div class="box">
-    <div class="box-header">
-        <h3 class="box-title">List Rumah</h3>
-        <div class="box-tools">
-            <div class="input-group">
-                <input type="text" style="width:150px" name="table_search" class="form-control input-sm pull-right" placeholder="Search" value="">
-                <div class="input-group-btn">
-                    <button class="btn btn-sm btn-default">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="box-body table-responsive no-padding">
-        @if(Session::has('no_data'))
-            <div>No Data</div>
-        @else
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <th>No</th>
-                        <th>No Lot</th>
-                        <th>Type</th>
-                        <th>Status</th>
-                        <th>Tindakan</th>
-                    </tr>
-                </tbody>
-                <?php $i = 1 ?>
-                <tbody>
-                    @foreach($data as $item)
-                    <tr>
-                        <td>{{$i}}</td>
-                        <td>{{$item->no_lot}}</td>
-                        <td>{{$item->type}}</td>
-                        <td>{{$item->status}}</td>
-                        <td> <a href="{{route('admin.insertPenduduk',$item->id)}}">Tambah Penduduk</a> </td>
-                    </tr>
-                    <?php $i++; ?>
-                    @endforeach
-                </tbody>
-            </table>
-        @endif
-        
-    </div>
-    </div>
-    </div>
-    </div>
  
+<div class="box">
+    <div class="box-header">
+         <a href="{{ route('admin.newRumah',$user->id) }}" class="btn btn-primary">Tambah</a>  
+         
+         <br>
+         <br>
+        <h3 class="box-title">Senarai Rumah Building {{$user->nama}} </h3>
+    </div>
+    <input type="hidden" value="">
+    <div class="box-body table-responsive">
+        <table id="example" class="display" width="100%">
+            
+        </table>
+    </div>
+</div>
+
+
+@endsection
+@section('after-scripts')
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+<script src="{{asset('assets/js/app.js')}}" type="text/javascript"></script>
+    <script>
+    
+
+    $(document).ready(function(){
+       $('#example').DataTable({
+            "ajax": '{{route("admin.listPenduduk",$user->id)}}',
+            "columns": [
+                { "data": "no_ic",title:"No Ic" },
+                { "data":"nama",title:"Nama"},
+                {"data":"jantina",title:"Jantina"},
+                {"data":"umur",title:"Umur"},
+                {"data":"race",title:"Race"},
+                {"data":"religion",title:"Agama"},
+                {"data":"income",title:"Total Income"},
+                {"data":"id",title:"Action", 
+                    "render":function(data, type, row, meta){
+                        if(type === 'display'){
+                            console.log(data);
+                            
+                            data =  '<a href="/prrt/public/admin/manageedit/'+data+'">Edit</a>';
+                        }
+                        return data;
+                    }
+                }
+            ]
+            
+        });
+    })
+</script>
 @endsection
