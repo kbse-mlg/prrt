@@ -31,15 +31,12 @@
 
     $(document).ready(function(){
        $('#example').DataTable({
-            "ajax": '{{route("admin.listPenduduk",$user->id)}}',
+            "ajax": '{{route("admin.listRumah",$user->id)}}',
             "columns": [
-                { "data": "no_ic",title:"No Ic" },
-                { "data":"nama",title:"Nama"},
-                {"data":"jantina",title:"Jantina"},
-                {"data":"umur",title:"Umur"},
-                {"data":"race",title:"Race"},
-                {"data":"religion",title:"Agama"},
-                {"data":"income",title:"Total Income"},
+                { "data": "no_lot",title:"No Lot" },
+                { "data":"type",title:"Jenis"},
+                {"data":"status",title:"Status"},
+                
                 {"data":"id",title:"Action", 
                     "render":function(data, type, row, meta){
                         if(type === 'display'){

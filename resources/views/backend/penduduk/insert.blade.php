@@ -24,7 +24,7 @@
     
     <form action="{{route('admin.addPenduduk')}}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
-       <input type="hidden" value="{{$id}}" name="id_rumah">
+      
         <div class="box-body">
             <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">No IC</label>
@@ -86,6 +86,22 @@
                 <label for="inputEmail" class="col-sm-2 control-label">Income</label>
                 <div class="col-sm-10">
                     <input type="text" name="income" class="form-control" id="alamat" placeholder="Income / month">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-sm-2 control-label">Jml Ahli Waris</label>
+                <div class="col-sm-10">
+                    <input type="text" name="member" class="form-control" id="nama_bangun" placeholder="Jumlah Ahli Waris">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-sm-2 control-label">Rumah</label>
+                <div class="col-sm-10">
+                    <select name="id_rumah" id="" class="form-control">
+                       @foreach($user as $item)
+                           <option value="{{$item->id_building}}">{{$item->no_lot}}</option>
+                       @endforeach
+                    </select>
                 </div>
             </div>
             <div class="box-footer">

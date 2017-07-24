@@ -7,7 +7,7 @@
 </div>
 <div class="box box-primary">
     <div class="box-header">
-        <h3 class="box-header">Tambah Maklumat Rumah</h3>
+        <h3 class="box-header">Tambah Asset</h3>
     </div>
     @if(Session::has('after_save'))
     <div class="row">
@@ -22,31 +22,32 @@
     </div>
     @endif
     
-    <form action="{{route('admin.insertRumah')}}" method="POST" class="form-horizontal">
+    <form action="{{route('admin.addAsset')}}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
-       <input type="hidden" value="{{$id}}" name="id_building">
+       <input type="hidden" value="{{$id}}" name="penduduk_id">
         <div class="box-body">
             <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">No Lot</label>
+                <label for="inputEmail" class="col-sm-2 control-label">Asset</label>
                 <div class="col-sm-10">
-                    <input type="text" name="no_lot" class="form-control" id="nama_bangun" placeholder="Nama Facility">
+                    <input type="text" name="asset" class="form-control" id="nama_bangun" placeholder="Nama Facility">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Type</label>
+                <label for="inputEmail" class="col-sm-2 control-label">Harga</label>
                 <div class="col-sm-10">
-                    <input type="text" name="type" class="form-control" id="jenis" placeholder="Jenis">
+                    <input type="text" name="price" class="form-control" id="jenis" placeholder="Jenis">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Status</label>
+                <label for="inputEmail" class="col-sm-2 control-label">Year</label>
                 <div class="col-sm-10">
-                    <select name="status" id="" class="form-control">
-                        <option value="Good">Available</option>
-                        <option value="Normal">Not Available</option>
-                         <option value="Normal">Under Maintenance</option>
-                        
-                    </select>
+                    <input type="text" name="year" class="form-control" id="jenis" placeholder="Jenis">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-sm-2 control-label">Alamat</label>
+                <div class="col-sm-10">
+                    <input type="text" name="alamat" class="form-control" id="jenis" placeholder="Jenis">
                 </div>
             </div>
             <div class="box-footer">

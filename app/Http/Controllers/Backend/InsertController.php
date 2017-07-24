@@ -115,7 +115,8 @@ class InsertController extends Controller
   
   
   public function insertPenduduk($id){
-    return view('backend.penduduk.insert')->with('id',$id);
+    $user = DB::table('rumah')->where('id_building',$id)->get();
+    return view('backend.penduduk.insert',["user"=>$user]);
   }
 
   public function newPenduduk(Request $request){
@@ -126,7 +127,8 @@ class InsertController extends Controller
             'umur'       => 'required',
             'race'       => 'required',
             'religion'   => 'required',
-            'income'     => 'required'
+            'income'     => 'required',
+            'member'     => 'required' 
     ],
     $after_save =[
             'alert' =>  'danger',
@@ -155,7 +157,8 @@ class InsertController extends Controller
             'race'              =>  $request->race,
             'religion'          =>  $request->religion,
             'income'            =>  $request->income,
-            'status'            =>  $request->status
+            'status'            =>  $request->status,
+            'member'            =>  $request->member
     ];
 
     DB::table('penduduk')->insert($insert);
@@ -167,6 +170,7 @@ class InsertController extends Controller
   
   public function insertRumah(Request $request){
     $validate = \Validator::make($request->all(),[
+            'id_building'=> 'required',
             'no_lot'      => 'required',
             'type'       => 'required',
             'status'    => 'required',
@@ -239,6 +243,59 @@ class InsertController extends Controller
     $user = DB::table('penduduk')->where('id_rumah',$id)->get();
     return response()->json(["data"=>$user]);
   }
+  public function detailAsset($id){
+    $user = DB::table('penduduk')->where('id',$id)->first();
+    return view('backend.penduduk_asset.detail')->with('user',$user);
+  }
+  public function newAsset($id){
+    return view('backend.penduduk_asset.insert')->with('id',$id);
+  }
+
+  public function addAsset(Request $request){
+    $validate = \Validator::make($request->all(),[
+            'asset'               =>  'required',
+            'penduduk_id'         =>  'required',
+            'price'               =>  'required',
+            'year'                =>  'required',
+            'alamat'              =>  'required'
+           
+    ],
+    $after_save =[
+            'alert' =>  'danger',
+            'title' =>  'Oh wait',
+            'text1' =>   'Something wrong',
+            'text2' =>  'Please Try Again'
+    ]);
+    
+    if($validate->fails()){
+      return redirect()->back()->with('after_save',$after_save);
+    }
+
+    $after_save = [
+            'alert'   => 'success',
+            'title'   => 'God Job!',
+            'text1'   => 'Tambah lagi',
+            'text2'   => 'Atau kembali.'
+        ];
+
+    $insert = [
+            'penduduk_id'        =>  $request->penduduk_id,
+            'asset'              =>  $request->asset,
+            
+            'year'               =>  $request->year,
+            'price'              =>  $request->price,
+            'alamat'             =>  $request->alamat
+    ];
+
+    DB::table('asset')->insert($insert);
+    return redirect()->back()->with('after_save',$after_save);
+  }
+  
+  public function listAssets($id){
+    $user = DB::table('asset')->where('penduduk_id',$id)->get();
+    return response()->json(["data"=>$user]);
+  }
+  
 
   
 }

@@ -3,10 +3,10 @@
  
 <div class="box">
     <div class="box-header">
-         <a href="{{ route('admin.insertPenduduk',$user->id) }}" class="btn btn-primary">Tambah</a>
+         <a href="{{ route('admin.newAsset',$user->id) }}" class="btn btn-primary">Tambah</a>
          <br>
          <br>
-        <h3 class="box-title">Senarai Penduduk Bangun {{$user->nama}}</h3>
+        <h3 class="box-title">Senarai Asset Keluarga {{$user->nama}}</h3>
     </div>
     <input type="hidden" value="">
     <div class="box-body table-responsive">
@@ -20,11 +20,7 @@
 @endsection
 @section('after-scripts')
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
-<style>
- .red {
-  background-color: #b55a7d !important;
-}
-</style>
+
 <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
@@ -34,35 +30,19 @@
 
     $(document).ready(function(){
        $('#example').DataTable({
-            "ajax": '{{route("admin.listPenduduk",$user->id)}}',
-            "createdRow": function (row, data, dataIndex) {
-                if (data.income < 2600) {
-                    console.log(data.income);
-                    $(row).addClass('red');
-
-                }
-
-
-            },
+            "ajax": '{{route("admin.listAssets",$user->id)}}',
             "columns": [
-                { "data": "no_ic",title:"No Ic" },
-                { "data":"nama",title:"Nama"},
-                {"data":"jantina",title:"Jantina"},
-                {"data":"umur",title:"Umur"},
-                {"data":"status",title:"Status"},
-                {"data":"race",title:"Race"},
-                {"data":"religion",title:"Agama"},
-                {"data":"income",title:"Total Income",render: $.fn.dataTable.render.number( ',', '.', 0, 'RM ' )},
-                {"data":"member",title:"Jmlh Ahli Waris",render:function(data,type,row){
-                    
-                    return data + " Orang";
-                }},
+                { "data": "asset",title:"Asset" },
+                { "data":"price",title:"Harga",render: $.fn.dataTable.render.number( ',', '.', 0, 'RM ' )},
+                {"data":"year",title:"Year"},
+                {"data":"alamat",title:"Alamat"},
+                
                 {"data":"id",title:"Action", 
                     "render":function(data, type, row, meta){
                         if(type === 'display'){
                             console.log(data);
                             
-                            data =  '<a href="/prrt/public/admin/manageedit/'+data+'">Edit</a> &nbsp; <a href="/prrt/public/admin/asset/'+data+'">Asset</a>';
+                            data =  '<a href="/prrt/public/admin/manageedit/'+data+'">Edit</a>';
                         }
                         return data;
                     }

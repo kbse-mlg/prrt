@@ -19,6 +19,7 @@ class CreatePendudukTable extends Migration {
 			$table->string('status');
 			$table->integer('id_rumah')->unsigned();
 			$table->double('income');
+			$table->integer('member');
 		});
 	}
 
