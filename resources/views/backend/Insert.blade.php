@@ -78,11 +78,12 @@
                             <div class="col-sm-10">
                                 <div id="mapid" class="form-control"style="width: 100%; height: 400px;"></div>
                             </div>
-                            
+
                         </div>
                         <div class="box-footer">
                             <button type="submit"class="btn btn-info">Simpan</button>
-                            <button type="submit"class="btn btn-danger">Kembali</button>
+                            <a href="{{ url()->previous() }}" class="btn btn-danger">Kembali</a>
+                            
                         </div>
                     </form>
                 </div>
@@ -112,7 +113,7 @@
             id: 'mapbox.streets'
         }).addTo(mymap);
 
-     
+
         var geocodeServices = L.esri.Geocoding.geocodeService();
         var shapes = L.featureGroup().addTo(mymap);
         mymap.on("click",function(event){
@@ -141,9 +142,9 @@
         mymap.on('geosearch/showlocation', function(data,event){
             console.log(data,event);
         })
-          
 
-          
+
+
     </script>
 @endsection
 @section('after-styles')

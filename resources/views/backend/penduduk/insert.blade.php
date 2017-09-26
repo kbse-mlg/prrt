@@ -1,8 +1,8 @@
-@extends('backend.layouts.app') 
+@extends('backend.layouts.app')
 @section('content')
 <div class="row">
     <div class="col-md-12">
-       
+
     </div>
 </div>
 <div class="box box-primary">
@@ -21,10 +21,10 @@
         </div>
     </div>
     @endif
-    
+
     <form action="{{route('admin.addPenduduk')}}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
-      
+
         <div class="box-body">
             <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">No IC</label>
@@ -44,7 +44,7 @@
                     <select name="jantina" id="" class="form-control">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
-                        
+
                     </select>
                 </div>
             </div>
@@ -106,7 +106,7 @@
             </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-info">Simpan</button>
-                <button type="submit" class="btn btn-danger">Kembali</button>
+                <a href="{{ url()->previous() }}" class="btn btn-danger">Kembali</a>
             </div>
         </div>
     </form>

@@ -7,12 +7,18 @@
         <div class="col-md-8 col-md-offset-2">
 
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('labels.frontend.auth.login_box_title') }}</div>
-
+                <div class="panel-heading">  <img src="{{ asset('img/logo-dark.png') }}"/> </div>
                 <div class="panel-body">
 
                     {{ Form::open(['route' => 'frontend.auth.login.post', 'class' => 'form-horizontal']) }}
+                    <div class="form-group">
+                        <div class="col-md-4">
+                        </div>
 
+                        <div class="col-md-6">
+                          <center>{{ link_to_route('frontend.index', app_name(), [], ['class' => 'navbar-brand']) }}</center>
+                        </div><!--col-md-6-->
+                    </div>
                     <div class="form-group">
                         {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
                         <div class="col-md-6">

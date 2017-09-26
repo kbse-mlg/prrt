@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use View;
 class InsertController extends Controller
 {
-  
+
   public function index(){
         $user = DB::table('building')->get();
 
@@ -24,7 +24,7 @@ class InsertController extends Controller
 
 
   public function insertBuilding(Request $request){
-    
+
     $validate = \Validator::make($request->all(),[
             'nama'      =>  'required',
             'jenis'            =>  'required',
@@ -38,7 +38,7 @@ class InsertController extends Controller
             'text1' =>  $request->get('nama_bangun'),
             'text2' =>  'Please Try Again'
     ]);
-    
+
     if($validate->fails()){
       return redirect()->back()->with('after_save',$after_save);
     }
@@ -64,7 +64,8 @@ class InsertController extends Controller
     ];
 
     DB::table('building')->insert($insert);
-    return redirect()->back()->with('after_save',$after_save);
+    return redirect('/manage');
+    // return redirect()->back()->with('after_save',$after_save);
   }
 
   public function buildingFacility($id){
@@ -75,7 +76,7 @@ class InsertController extends Controller
   public function insertFacility(Request $request){
     $validate = \Validator::make($request->all(),[
             'nama'                =>  'required',
-            
+
             'condition'           =>  'required',
             'year'                =>  'required',
             'harga'               =>  'required'
@@ -86,7 +87,7 @@ class InsertController extends Controller
             'text1' =>   $request->condition,
             'text2' =>  'Please Try Again'
     ]);
-    
+
     if($validate->fails()){
       return redirect()->back()->with('after_save',$after_save);
     }
@@ -101,7 +102,7 @@ class InsertController extends Controller
     $insert = [
             'id_building'        =>  $request->id_building,
             'Nama'               =>  $request->nama,
-            
+
             'condition'          =>  $request->condition,
             'tahun'              =>  $request->year,
             'harga'              =>  $request->harga
@@ -112,8 +113,8 @@ class InsertController extends Controller
   }
 
 
-  
-  
+
+
   public function insertPenduduk($id){
     $user = DB::table('rumah')->where('id_building',$id)->get();
     return view('backend.penduduk.insert',["user"=>$user]);
@@ -128,7 +129,7 @@ class InsertController extends Controller
             'race'       => 'required',
             'religion'   => 'required',
             'income'     => 'required',
-            'member'     => 'required' 
+            'member'     => 'required'
     ],
     $after_save =[
             'alert' =>  'danger',
@@ -136,7 +137,7 @@ class InsertController extends Controller
             'text1' =>  'something wrong',
             'text2' =>  'Please Try Again'
     ]);
-    
+
     if($validate->fails()){
       return redirect()->back()->with('after_save',$after_save);
     }
@@ -164,17 +165,17 @@ class InsertController extends Controller
     DB::table('penduduk')->insert($insert);
     return redirect()->back()->with('after_save',$after_save);
   }
-  
 
-  
-  
+
+
+
   public function insertRumah(Request $request){
     $validate = \Validator::make($request->all(),[
             'id_building'=> 'required',
             'no_lot'      => 'required',
             'type'       => 'required',
             'status'    => 'required',
-            
+
     ],
     $after_save =[
             'alert' =>  'danger',
@@ -182,7 +183,7 @@ class InsertController extends Controller
             'text1' =>  'something wrong',
             'text2' =>  'Please Try Again'
     ]);
-    
+
     if($validate->fails()){
       return redirect()->back()->with('after_save',$after_save);
     }
@@ -199,7 +200,7 @@ class InsertController extends Controller
             'no_lot'             =>  $request->no_lot,
             'type'              =>  $request->type,
             'status'           =>  $request->status,
-           
+
     ];
 
     DB::table('rumah')->insert($insert);
@@ -210,7 +211,7 @@ class InsertController extends Controller
   public function rumahIndex($id){
     $user = DB::table('building')->where('id',$id)->first();
     return view('backend.Maklumat_Rumah.index')->with('user',$user);
-    
+
   }
   public function newRumah($id){
       return view('backend.Maklumat_Rumah.add')->with('id',$id);
@@ -223,7 +224,7 @@ class InsertController extends Controller
 
   public function addFacility(){
     //Add Building Facility
-    return view('backend.InsertFacility'); 
+    return view('backend.InsertFacility');
   }
 
   public function pendudukIndex($id){
@@ -258,7 +259,7 @@ class InsertController extends Controller
             'price'               =>  'required',
             'year'                =>  'required',
             'alamat'              =>  'required'
-           
+
     ],
     $after_save =[
             'alert' =>  'danger',
@@ -266,7 +267,7 @@ class InsertController extends Controller
             'text1' =>   'Something wrong',
             'text2' =>  'Please Try Again'
     ]);
-    
+
     if($validate->fails()){
       return redirect()->back()->with('after_save',$after_save);
     }
@@ -281,7 +282,7 @@ class InsertController extends Controller
     $insert = [
             'penduduk_id'        =>  $request->penduduk_id,
             'asset'              =>  $request->asset,
-            
+
             'year'               =>  $request->year,
             'price'              =>  $request->price,
             'alamat'             =>  $request->alamat
@@ -290,12 +291,12 @@ class InsertController extends Controller
     DB::table('asset')->insert($insert);
     return redirect()->back()->with('after_save',$after_save);
   }
-  
+
   public function listAssets($id){
     $user = DB::table('asset')->where('penduduk_id',$id)->get();
     return response()->json(["data"=>$user]);
   }
-  
 
-  
+
+
 }

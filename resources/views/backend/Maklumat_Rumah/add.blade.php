@@ -1,8 +1,8 @@
-@extends('backend.layouts.app') 
+@extends('backend.layouts.app')
 @section('content')
 <div class="row">
     <div class="col-md-12">
-       
+
     </div>
 </div>
 <div class="box box-primary">
@@ -21,7 +21,7 @@
         </div>
     </div>
     @endif
-    
+
     <form action="{{route('admin.insertRumah')}}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
        <input type="hidden" value="{{$id}}" name="id_building">
@@ -45,13 +45,13 @@
                         <option value="Good">Available</option>
                         <option value="Normal">Not Available</option>
                          <option value="Normal">Under Maintenance</option>
-                        
+
                     </select>
                 </div>
             </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-info">Simpan</button>
-                <button type="submit" class="btn btn-danger">Kembali</button>
+                  <a href="{{ url()->previous() }}" class="btn btn-danger">Kembali</a>
             </div>
         </div>
     </form>

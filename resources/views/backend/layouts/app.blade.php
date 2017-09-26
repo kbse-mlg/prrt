@@ -69,6 +69,8 @@
 
         <!-- JavaScripts -->
         @yield('before-scripts')
+
+        <link href="{{ asset('css/font-awesome.min.css') }}" rel='stylesheet' type='text/css'>
         {{ Html::script(mix('js/backend.js')) }}
         @yield('after-scripts')
     </body>

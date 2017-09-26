@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
@@ -33,10 +34,10 @@
             ]); ?>
         </script>
     </head>
-    <body id="app-layout">
+    <body id="app-layout" style="background-size:cover;" background="{{ asset('img/download(1).png') }}" >
         <div id="app">
             @include('includes.partials.logged-in-as')
-            @include('frontend.includes.nav')
+            <!-- @include('frontend.includes.nav') -->
 
             <div class="container">
                 @include('includes.partials.messages')

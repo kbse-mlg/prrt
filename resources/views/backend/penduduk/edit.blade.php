@@ -73,7 +73,7 @@
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-info">Simpan</button>
-                            <button type="submit" class="btn btn-danger">Kembali</button>
+                              <a href="{{ url()->previous() }}" class="btn btn-danger">Kembali</a>
                         </div>
                     </form>
                 </div>

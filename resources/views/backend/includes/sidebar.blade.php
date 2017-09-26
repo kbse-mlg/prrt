@@ -31,7 +31,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            
+
 
             <li class="">
                 <a href="{{ route('admin.dashboard') }}">
@@ -44,23 +44,11 @@
                     <i class="fa fa-male"></i>
                     <span>Manage PPR</span>
             </a>
-            <li>
-            <a href="">
-                    <i class="fa fa-building"></i>
-                    <span>Fasiliti</span>
-                </a>
-            </li>
-            <li>
-            <a href="">
-                    <i class="fa fa-male"></i>
-                    <span>Penduduk</span>
-                </a>
-            </li>
-            <li>
-           
+            
+
             </li>
 
-            
+
 
             @role(1)
             <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">
