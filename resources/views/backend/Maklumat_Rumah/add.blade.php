@@ -1,8 +1,8 @@
-@extends('backend.layouts.app') 
+@extends('backend.layouts.app')
 @section('content')
 <div class="row">
     <div class="col-md-12">
-       
+
     </div>
 </div>
 <div class="box box-primary">
@@ -21,48 +21,37 @@
         </div>
     </div>
     @endif
-    
-    <form action="{{route('admin.insertFacility')}}" method="POST" class="form-horizontal">
+
+    <form action="{{route('admin.insertRumah')}}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
        <input type="hidden" value="{{$id}}" name="id_building">
         <div class="box-body">
             <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Nama Facility</label>
+                <label for="inputEmail" class="col-sm-2 control-label">No Lot</label>
                 <div class="col-sm-10">
-                    <input type="text" name="nama" class="form-control" id="nama_bangun" placeholder="Nama Facility">
+                    <input type="text" name="no_lot" class="form-control" id="nama_bangun" placeholder="Nama Facility">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Jenis Facility</label>
+                <label for="inputEmail" class="col-sm-2 control-label">Type</label>
                 <div class="col-sm-10">
-                    <input type="text" name="jenis" class="form-control" id="jenis" placeholder="Jenis">
+                    <input type="text" name="type" class="form-control" id="jenis" placeholder="Jenis">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Condition</label>
+                <label for="inputEmail" class="col-sm-2 control-label">Status</label>
                 <div class="col-sm-10">
-                    <select name="condition" id="" class="form-control">
-                        <option value="Good">Good</option>
-                        <option value="Normal">Normal</option>
-                        <option value="Bad">Bad</option>
+                    <select name="status" id="" class="form-control">
+                        <option value="Good">Available</option>
+                        <option value="Normal">Not Available</option>
+                         <option value="Normal">Under Maintenance</option>
+
                     </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Year</label>
-                <div class="col-sm-10">
-                    <input type="text" name="year" class="form-control" id="alamat" placeholder="Year">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Price</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="harga" id="longitude" placeholder="harga">
                 </div>
             </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-info">Simpan</button>
-                <button type="submit" class="btn btn-danger">Kembali</button>
+                  <a href="{{ url()->previous() }}" class="btn btn-danger">Kembali</a>
             </div>
         </div>
     </form>

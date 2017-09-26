@@ -12,6 +12,9 @@ class CreateBuildingTable extends Migration {
 			$table->string('nama', 500);
 			$table->string('jenis', 50);
 			$table->string('alamat', 500);
+			$table->string('negeri',500);
+            $table->string('parlimen',500);
+            $table->string('dun',500);
 			$table->float('latitude');
 			$table->float('longitude');
 			$table->text('geojson');
@@ -20,6 +23,6 @@ class CreateBuildingTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('Building');
+		Schema::dropIfExists('building');
 	}
 }

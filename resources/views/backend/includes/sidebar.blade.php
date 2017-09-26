@@ -31,7 +31,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            
+
 
             <li class="">
                 <a href="{{ route('admin.dashboard') }}">
@@ -40,31 +40,15 @@
                 </a>
             </li>
             <li>
-            <a href="{{ route('admin.tambah') }}">
-                    <i class="fa fa-plus-square-o"></i>
-                    <span>Tambah Data</span>
-                </a>
-            </li>
-            <li>
-            <a href="{{ route('admin.tambah') }}">
-                    <i class="fa fa-building"></i>
-                    <span>Fasiliti</span>
-                </a>
-            </li>
-            <li>
-            <a href="">
+             <a href="{{route('admin.manage')}}">
                     <i class="fa fa-male"></i>
-                    <span>Penduduk</span>
-                </a>
-            </li>
-            <li>
-            <a href="{{route('admin.manage')}}">
-                    <i class="fa fa-male"></i>
-                    <span>Manage PRR</span>
+                    <span>Manage PPR</span>
             </a>
+            
+
             </li>
 
-            
+
 
             @role(1)
             <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">

@@ -1,8 +1,8 @@
-@extends('backend.layouts.app') 
+@extends('backend.layouts.app')
 @section('content')
 <div class="row">
     <div class="col-md-12">
-       
+
     </div>
 </div>
 <div class="box box-primary">
@@ -21,10 +21,10 @@
         </div>
     </div>
     @endif
-    
+
     <form action="{{route('admin.addPenduduk')}}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
-       <input type="hidden" value="{{$id}}" name="id_rumah">
+
         <div class="box-body">
             <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">No IC</label>
@@ -44,7 +44,7 @@
                     <select name="jantina" id="" class="form-control">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
-                        
+
                     </select>
                 </div>
             </div>
@@ -88,9 +88,25 @@
                     <input type="text" name="income" class="form-control" id="alamat" placeholder="Income / month">
                 </div>
             </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-sm-2 control-label">Jml Ahli Waris</label>
+                <div class="col-sm-10">
+                    <input type="text" name="member" class="form-control" id="nama_bangun" placeholder="Jumlah Ahli Waris">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-sm-2 control-label">Rumah</label>
+                <div class="col-sm-10">
+                    <select name="id_rumah" id="" class="form-control">
+                       @foreach($user as $item)
+                           <option value="{{$item->id_building}}">{{$item->no_lot}}</option>
+                       @endforeach
+                    </select>
+                </div>
+            </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-info">Simpan</button>
-                <button type="submit" class="btn btn-danger">Kembali</button>
+                <a href="{{ url()->previous() }}" class="btn btn-danger">Kembali</a>
             </div>
         </div>
     </form>

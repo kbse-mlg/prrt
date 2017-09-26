@@ -3,11 +3,10 @@
 
 <div class="box">
     <div class="box-header">
-         <a href="{{ route('admin.newRumah',$user->id) }}" class="btn btn-primary">Tambah</a>
-
+         <a href="{{ route('admin.newAsset',$user->id) }}" class="btn btn-primary">Tambah</a>
          <br>
          <br>
-        <h3 class="box-title">Senarai Rumah Building {{$user->nama}} </h3>
+        <h3 class="box-title">Senarai Asset Keluarga {{$user->nama}}</h3>
     </div>
     <input type="hidden" value="">
     <div class="box-body table-responsive">
@@ -31,22 +30,14 @@
 
     $(document).ready(function(){
        $('#example').DataTable({
-            "ajax": '{{route("admin.listRumah",$user->id)}}',
+            "ajax": '{{route("admin.listAssets",$user->id)}}',
             "columns": [
-                { "data": "no_lot",title:"No Lot" },
-                { "data":"type",title:"Jenis"},
-                {"data":"status",title:"Status"},
+                { "data": "asset",title:"Asset" },
+                { "data":"price",title:"Harga",render: $.fn.dataTable.render.number( ',', '.', 0, 'RM ' )},
+                {"data":"year",title:"Year"},
+                {"data":"alamat",title:"Alamat"},
 
-                // {"data":"id",title:"Action",
-                //     "render":function(data, type, row, meta){
-                //         if(type === 'display'){
-                //             console.log(data);
-                //
-                //
-                //         }
-                //         return data;
-                //     }
-                // }
+                
             ]
 
         });

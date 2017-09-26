@@ -24,13 +24,31 @@
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Nama</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama_bangun" class="form-control" id="nama_bangun" placeholder="Nama">
+                                    <input type="text" name="nama" class="form-control" id="nama_bangun" placeholder="Nama">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-2 control-label">Jenis</label>
                                 <div class="col-sm-10">
                                     <input type="text" name ="jenis"class="form-control" id="jenis" placeholder="Jenis">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Negeri</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name ="negeri"class="form-control" id="negeri" placeholder="Negeri">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Parlimen</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name ="parlimen"class="form-control" id="parlimen" placeholder="Parlimen">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Dun</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name ="dun"class="form-control" id="dun" placeholder="Dun">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -60,11 +78,12 @@
                             <div class="col-sm-10">
                                 <div id="mapid" class="form-control"style="width: 100%; height: 400px;"></div>
                             </div>
-                            
+
                         </div>
                         <div class="box-footer">
                             <button type="submit"class="btn btn-info">Simpan</button>
-                            <button type="submit"class="btn btn-danger">Kembali</button>
+                            <a href="{{ url()->previous() }}" class="btn btn-danger">Kembali</a>
+                            
                         </div>
                     </form>
                 </div>
@@ -94,7 +113,7 @@
             id: 'mapbox.streets'
         }).addTo(mymap);
 
-     
+
         var geocodeServices = L.esri.Geocoding.geocodeService();
         var shapes = L.featureGroup().addTo(mymap);
         mymap.on("click",function(event){
@@ -102,6 +121,8 @@
             $("#longitude").val(event.latlng.lng.toString())
             geocodeServices.reverse().latlng(event.latlng).run(function(error,result){
                 $("#alamat").val(result.address.Match_addr);
+                $("#negeri").val(result.address.Region);
+                $("#parlimen").val(result.address.Subregion);
             })
             console.log(event.latlng.lat.toString()+"test");
         });
@@ -121,9 +142,9 @@
         mymap.on('geosearch/showlocation', function(data,event){
             console.log(data,event);
         })
-          
 
-          
+
+
     </script>
 @endsection
 @section('after-styles')

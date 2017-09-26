@@ -7,7 +7,7 @@
 </div>
 <div class="box box-primary">
     <div class="box-header">
-        <h3 class="box-header">Tambah Maklumat Facility</h3>
+        <h3 class="box-header">Tambah Asset</h3>
     </div>
     @if(Session::has('after_save'))
     <div class="row">
@@ -21,43 +21,38 @@
         </div>
     </div>
     @endif
-    <form action="{{route('admin.insertFacility')}}" method="POST" class="form-horizontal">
+
+    <form action="{{route('admin.addAsset')}}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
-        @foreach($data as $item)
-            <input type="hidden" value="{{$item->id}}" name="id_building">
-        @endforeach
+       <input type="hidden" value="{{$id}}" name="penduduk_id">
         <div class="box-body">
             <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Nama Facility</label>
+                <label for="inputEmail" class="col-sm-2 control-label">Asset</label>
                 <div class="col-sm-10">
-                    <input type="text" name="nama" class="form-control" id="nama_bangun" placeholder="Nama Facility">
+                    <input type="text" name="asset" class="form-control" id="nama_bangun" placeholder="Nama Facility">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Condition</label>
+                <label for="inputEmail" class="col-sm-2 control-label">Harga</label>
                 <div class="col-sm-10">
-                    <select name="condition" id="" class="form-control">
-                        <option value="Good">Good</option>
-                        <option value="Normal">Normal</option>
-                        <option value="Bad">Bad</option>
-                    </select>
+                    <input type="text" name="price" class="form-control" id="jenis" placeholder="Jenis">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">Year</label>
                 <div class="col-sm-10">
-                    <input type="text" name="year" class="form-control" id="alamat" placeholder="Year">
+                    <input type="text" name="year" class="form-control" id="jenis" placeholder="Jenis">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail" class="col-sm-2 control-label">Price</label>
+                <label for="inputEmail" class="col-sm-2 control-label">Alamat</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="harga" id="longitude" placeholder="harga">
+                    <input type="text" name="alamat" class="form-control" id="jenis" placeholder="Jenis">
                 </div>
             </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-info">Simpan</button>
-                <a href="{{ url()->previous() }}" class="btn btn-danger">Kembali</a>
+                  <a href="{{ url()->previous() }}" class="btn btn-danger">Kembali</a>
             </div>
         </div>
     </form>
